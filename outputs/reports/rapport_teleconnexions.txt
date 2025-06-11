@@ -1,0 +1,74 @@
+RAPPORT D'ANALYSE DES TÉLÉCONNEXIONS
+============================================================
+
+Date de génération: 2025-06-11 06:17:21
+Période d'analyse: 1981-2023
+Nombre d'événements extrêmes: 1439
+Indices climatiques analysés: ['IOD', 'Nino34', 'TNA']
+
+1. RÉSULTATS PRINCIPAUX
+-------------------------
+
+IOD:
+  Décalage optimal: 10 mois
+  Corrélation: 0.050
+  Significativité: Non (p = 0.259)
+  Nombre d'observations: 506
+  Lags significatifs: 0 lags
+
+Nino34:
+  Décalage optimal: 7 mois
+  Corrélation: -0.114
+  Significativité: Oui (p = 0.010)
+  Nombre d'observations: 509
+  Lags significatifs: 5 lags
+
+TNA:
+  Décalage optimal: 0 mois
+  Corrélation: 0.219
+  Significativité: Oui (p = 0.000)
+  Nombre d'observations: 516
+  Lags significatifs: 9 lags
+
+2. ANALYSE SAISONNIÈRE
+-------------------------
+
+Saison Seche:
+  Aucune corrélation significative détectée
+
+Saison Pluies:
+  Corrélations significatives:
+    IOD: 0.172 (p=0.007)
+    TNA: 0.268 (p=0.000)
+
+3. INTERPRÉTATION ET MÉCANISMES
+-----------------------------------
+
+Indices avec corrélations significatives:
+  Nino34:
+    - Corrélation -0.114 avec décalage de 7 mois
+    - Mécanisme: ENSO influence la position de la ZCIT
+    - Impact: Modulation de la mousson ouest-africaine
+
+  TNA:
+    - Corrélation 0.219 avec décalage de 0 mois
+    - Mécanisme: Atlantique tropical nord source d'humidité directe
+    - Impact: Contrôle du gradient thermique océan-continent
+
+4. RECOMMANDATIONS POUR LA MODÉLISATION ML
+---------------------------------------------
+
+Variables prédictives recommandées:
+  IOD_lag10: Utiliser avec décalage de 10 mois
+  Nino34_lag7: Utiliser avec décalage de 7 mois
+  TNA_lag0: Utiliser avec décalage de 0 mois
+
+Période d'entraînement suggérée: 1981-2017 (37 ans)
+Période de test suggérée: 2018-2023 (6 ans)
+
+Algorithmes ML recommandés:
+  - Random Forest: Robuste aux corrélations modérées
+  - XGBoost: Capture des interactions non-linéaires
+  - SVM avec noyau RBF: Relations complexes
+  - Réseaux de neurones: Patterns sophistiqués
+

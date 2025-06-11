@@ -1,0 +1,17 @@
+{
+  "creation_date": "2025-06-11 06:17:21",
+  "source_events": "c:\\Users\\laity\\Desktop\\M\u00e9moire Master\\M\u00e9moire\\Traitement\\data\\processed\\extreme_events_senegal_final.csv",
+  "source_indices": "c:\\Users\\laity\\Desktop\\M\u00e9moire Master\\M\u00e9moire\\Traitement\\data\\processed\\climate_features_lag12.csv",
+  "n_observations": 507,
+  "n_features_climate": 39,
+  "n_features_temporal": 2,
+  "max_lag_months": 12,
+  "period_start": "1981-10",
+  "period_end": "2023-12",
+  "target_variables": [
+    "target_occurrence",
+    "target_count",
+    "target_intensity"
+  ],
+  "ready_for_ml": true
+}

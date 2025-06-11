@@ -1,0 +1,128 @@
+{
+  "analysis_date": "2025-06-11T06:17:09.113694",
+  "analysis_type": "top5_most_intense_precipitation_events",
+  "total_events": 5,
+  "summary_statistics": {
+    "max_intensity_mm": 231.35137939453125,
+    "min_intensity_mm": 129.83322143554688,
+    "mean_intensity_mm": 164.92201232910156,
+    "total_area_km2": 365000.0,
+    "mean_coverage_percent": 20.857142857142854,
+    "latitudinal_extent_deg": 2.1127900000000004,
+    "longitudinal_extent_deg": 3.2148269999999997,
+    "regions_affected": [
+      "Kédougou",
+      "Kolda",
+      "Tambacounda",
+      "Diourbel"
+    ],
+    "intensity_area_correlation": -0.7509760560432945
+  },
+  "events": [
+    {
+      "rank": 1,
+      "date": "1985-08-06",
+      "total_area_km2": 53125.0,
+      "num_pixels_affected": 85,
+      "centroid_lat": 12.869118,
+      "centroid_lon": -13.013235,
+      "lat_extent_deg": 1.0,
+      "lon_extent_deg": 1.0,
+      "max_intensity_mm": 231.35137939453125,
+      "max_intensity_lat": 12.869118,
+      "max_intensity_lon": -13.013235,
+      "coverage_percent": 15.178571428571429,
+      "intensity_stats": {
+        "mean": 92.54055175781251,
+        "median": 69.40541381835938,
+        "std": 57.83784484863281,
+        "p95": 185.08110351562502
+      },
+      "region": "Kédougou"
+    },
+    {
+      "rank": 2,
+      "date": "2014-08-14",
+      "total_area_km2": 65000.0,
+      "num_pixels_affected": 104,
+      "centroid_lat": 13.478365,
+      "centroid_lon": -15.278846,
+      "lat_extent_deg": 1.0,
+      "lon_extent_deg": 1.0,
+      "max_intensity_mm": 193.93798828125,
+      "max_intensity_lat": 13.478365,
+      "max_intensity_lon": -15.278846,
+      "coverage_percent": 18.571428571428573,
+      "intensity_stats": {
+        "mean": 77.5751953125,
+        "median": 58.181396484375,
+        "std": 48.4844970703125,
+        "p95": 155.150390625
+      },
+      "region": "Kolda"
+    },
+    {
+      "rank": 3,
+      "date": "1996-08-04",
+      "total_area_km2": 86875.0,
+      "num_pixels_affected": 139,
+      "centroid_lat": 13.096223,
+      "centroid_lon": -12.914568,
+      "lat_extent_deg": 1.0,
+      "lon_extent_deg": 1.0,
+      "max_intensity_mm": 136.91497802734375,
+      "max_intensity_lat": 13.096223,
+      "max_intensity_lon": -12.914568,
+      "coverage_percent": 24.821428571428573,
+      "intensity_stats": {
+        "mean": 54.7659912109375,
+        "median": 41.074493408203125,
+        "std": 34.22874450683594,
+        "p95": 109.531982421875
+      },
+      "region": "Tambacounda"
+    },
+    {
+      "rank": 4,
+      "date": "2009-08-28",
+      "total_area_km2": 95000.0,
+      "num_pixels_affected": 152,
+      "centroid_lat": 14.981908,
+      "centroid_lon": -15.565789,
+      "lat_extent_deg": 1.0,
+      "lon_extent_deg": 1.0,
+      "max_intensity_mm": 132.57249450683594,
+      "max_intensity_lat": 14.981908,
+      "max_intensity_lon": -15.565789,
+      "coverage_percent": 27.142857142857142,
+      "intensity_stats": {
+        "mean": 53.02899780273438,
+        "median": 39.77174835205078,
+        "std": 33.143123626708984,
+        "p95": 106.05799560546876
+      },
+      "region": "Diourbel"
+    },
+    {
+      "rank": 5,
+      "date": "2011-08-21",
+      "total_area_km2": 65000.0,
+      "num_pixels_affected": 104,
+      "centroid_lat": 13.153846,
+      "centroid_lon": -12.350962,
+      "lat_extent_deg": 1.0,
+      "lon_extent_deg": 1.0,
+      "max_intensity_mm": 129.83322143554688,
+      "max_intensity_lat": 13.153846,
+      "max_intensity_lon": -12.350962,
+      "coverage_percent": 18.571428571428573,
+      "intensity_stats": {
+        "mean": 51.93328857421875,
+        "median": 38.94996643066406,
+        "std": 32.45830535888672,
+        "p95": 103.8665771484375
+      },
+      "region": "Tambacounda"
+    }
+  ]
+}

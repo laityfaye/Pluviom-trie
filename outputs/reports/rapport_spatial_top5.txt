@@ -1,0 +1,162 @@
+RAPPORT SPATIAL DÉTAILLÉ - TOP 5 PRÉCIPITATIONS EXTRÊMES
+================================================================================
+
+Date de génération: 2025-06-11 06:17:09
+Période d'analyse: 1981-2023
+Critère de sélection: 5 événements les plus intenses (précipitation maximale)
+Zone d'étude: Sénégal
+
+RÉSUMÉ EXÉCUTIF
+--------------------
+• Intensité maximale: 231.4 mm/jour
+• Surface totale affectée: 365000 km²
+• Couverture moyenne: 20.86% du territoire
+• Étendue latitudinale: 2.11°
+• Étendue longitudinale: 3.21°
+
+ANALYSE DÉTAILLÉE PAR ÉVÉNEMENT
+----------------------------------------
+
+RANG #1: 1985-08-06
+==============================
+Localisation:
+  • Région: Kédougou
+  • Centroïde: 12.8691°N, 13.0132°W
+  • Position max: 12.8691°N, 13.0132°W
+
+Métriques spatiales:
+  • Surface affectée: 53125 km²
+  • Couverture: 15.18% du territoire
+  • Points de grille: 85
+  • Étendue: 1.00° × 1.00°
+
+Intensité des précipitations:
+  • Maximum: 231.4 mm/jour
+  • Moyenne: 92.5 mm/jour
+  • Médiane: 69.4 mm/jour
+  • 95e percentile: 185.1 mm/jour
+  • Écart-type: 57.8 mm/jour
+
+------------------------------------------------------------
+
+RANG #2: 2014-08-14
+==============================
+Localisation:
+  • Région: Kolda
+  • Centroïde: 13.4784°N, 15.2788°W
+  • Position max: 13.4784°N, 15.2788°W
+
+Métriques spatiales:
+  • Surface affectée: 65000 km²
+  • Couverture: 18.57% du territoire
+  • Points de grille: 104
+  • Étendue: 1.00° × 1.00°
+
+Intensité des précipitations:
+  • Maximum: 193.9 mm/jour
+  • Moyenne: 77.6 mm/jour
+  • Médiane: 58.2 mm/jour
+  • 95e percentile: 155.2 mm/jour
+  • Écart-type: 48.5 mm/jour
+
+------------------------------------------------------------
+
+RANG #3: 1996-08-04
+==============================
+Localisation:
+  • Région: Tambacounda
+  • Centroïde: 13.0962°N, 12.9146°W
+  • Position max: 13.0962°N, 12.9146°W
+
+Métriques spatiales:
+  • Surface affectée: 86875 km²
+  • Couverture: 24.82% du territoire
+  • Points de grille: 139
+  • Étendue: 1.00° × 1.00°
+
+Intensité des précipitations:
+  • Maximum: 136.9 mm/jour
+  • Moyenne: 54.8 mm/jour
+  • Médiane: 41.1 mm/jour
+  • 95e percentile: 109.5 mm/jour
+  • Écart-type: 34.2 mm/jour
+
+------------------------------------------------------------
+
+RANG #4: 2009-08-28
+==============================
+Localisation:
+  • Région: Diourbel
+  • Centroïde: 14.9819°N, 15.5658°W
+  • Position max: 14.9819°N, 15.5658°W
+
+Métriques spatiales:
+  • Surface affectée: 95000 km²
+  • Couverture: 27.14% du territoire
+  • Points de grille: 152
+  • Étendue: 1.00° × 1.00°
+
+Intensité des précipitations:
+  • Maximum: 132.6 mm/jour
+  • Moyenne: 53.0 mm/jour
+  • Médiane: 39.8 mm/jour
+  • 95e percentile: 106.1 mm/jour
+  • Écart-type: 33.1 mm/jour
+
+------------------------------------------------------------
+
+RANG #5: 2011-08-21
+==============================
+Localisation:
+  • Région: Tambacounda
+  • Centroïde: 13.1538°N, 12.3510°W
+  • Position max: 13.1538°N, 12.3510°W
+
+Métriques spatiales:
+  • Surface affectée: 65000 km²
+  • Couverture: 18.57% du territoire
+  • Points de grille: 104
+  • Étendue: 1.00° × 1.00°
+
+Intensité des précipitations:
+  • Maximum: 129.8 mm/jour
+  • Moyenne: 51.9 mm/jour
+  • Médiane: 38.9 mm/jour
+  • 95e percentile: 103.9 mm/jour
+  • Écart-type: 32.5 mm/jour
+
+------------------------------------------------------------
+
+ANALYSE COMPARATIVE
+-------------------------
+
+Corrélations:
+  • Intensité vs Surface: -0.751
+
+Distribution régionale:
+  • Tambacounda: 2 événement(s)
+  • Kédougou: 1 événement(s)
+  • Kolda: 1 événement(s)
+  • Diourbel: 1 événement(s)
+
+Classement par surface:
+  1. Rang #4: 95000 km²
+  2. Rang #3: 86875 km²
+  3. Rang #2: 65000 km²
+  4. Rang #5: 65000 km²
+  5. Rang #1: 53125 km²
+
+CONCLUSIONS
+---------------
+1. Variabilité spatiale: Les événements les plus intenses montrent une
+   distribution géographique hétérogène sur le territoire sénégalais.
+
+2. Relation intensité-étendue: Corrélation négative, les événements
+   les plus intenses sont spatialement concentrés.
+
+3. Zone préférentielle: La région de Tambacounda concentre
+   le plus grand nombre d'événements extrêmes intenses.
+
+4. Implications: Ces résultats fournissent une base quantitative précise
+   pour l'évaluation des risques et la planification de l'adaptation
+   au changement climatique au Sénégal.
