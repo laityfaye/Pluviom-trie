@@ -12,20 +12,20 @@ import sys
 from pathlib import Path
 
 # Ajouter le dossier parent au path pour les imports
-sys.path.append(str(Path(__file__).parent.parent))
-
 try:
-    from config.settings import SENEGAL_BOUNDS
+    from ..config.settings import SENEGAL_BOUNDS
 except ImportError:
-    # Valeurs par défaut si la configuration n'est pas disponible
-    SENEGAL_BOUNDS = {
-        'lat_min': 12.0, 'lat_max': 17.0,
-        'lon_min': -18.0, 'lon_max': -11.0
-    }
+    # Import absolu comme fallback  
+    try:
+        from src.config.settings import SENEGAL_BOUNDS
+    except ImportError:
+        # Seulement en dernier recours
+        SENEGAL_BOUNDS = {
+            'lat_min': 12.0, 'lat_max': 17.0,
+            'lon_min': -18.0, 'lon_max': -11.0
+        }
 
 warnings.filterwarnings('ignore')
-
-
 class ChirpsDataLoader:
     """Classe pour le chargement et la préparation des données CHIRPS."""
     

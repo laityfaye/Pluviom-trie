@@ -1,0 +1,111 @@
+RAPPORT SPATIAL - TOP 10 ÉVÉNEMENTS PAR COUVERTURE SPATIALE
+================================================================================
+
+Date de génération: 2025-06-11 16:13:07
+Type d'analyse: top10_coverage_events
+Nombre d'événements: 10
+Période: 1981-2023
+
+RÉSUMÉ EXÉCUTIF
+--------------------
+• Intensité maximale: 79.5 mm/jour
+• Surface totale affectée: 2825600 km²
+• Couverture moyenne: 67.30% du territoire
+• Dispersion géographique: 0.437° (lat), 0.349° (lon)
+
+ANALYSE DÉTAILLÉE PAR ÉVÉNEMENT
+----------------------------------------
+
+RANG #1: 1996-11-08
+==============================
+Localisation: Tambacounda
+Centroïde: 13.4305°N, 13.8736°W
+Surface: 338162 km²
+Intensité max: 8.1 mm/jour
+Intensité moyenne: 1.4 mm/jour
+
+RANG #2: 2012-09-28
+==============================
+Localisation: Tambacounda
+Centroïde: 14.3094°N, 14.0519°W
+Surface: 328206 km²
+Intensité max: 44.3 mm/jour
+Intensité moyenne: 22.3 mm/jour
+
+RANG #3: 2000-10-16
+==============================
+Localisation: Tambacounda
+Centroïde: 14.2008°N, 13.9368°W
+Surface: 291341 km²
+Intensité max: 30.7 mm/jour
+Intensité moyenne: 11.5 mm/jour
+
+RANG #4: 2018-06-27
+==============================
+Localisation: Tambacounda
+Centroïde: 14.5826°N, 13.3352°W
+Surface: 285175 km²
+Intensité max: 37.5 mm/jour
+Intensité moyenne: 19.9 mm/jour
+
+RANG #5: 2022-10-24
+==============================
+Localisation: Tambacounda
+Centroïde: 13.3687°N, 14.3551°W
+Surface: 281523 km²
+Intensité max: 56.4 mm/jour
+Intensité moyenne: 13.6 mm/jour
+
+RANG #6: 2022-05-27
+==============================
+Localisation: Tambacounda
+Centroïde: 13.5334°N, 13.4747°W
+Surface: 273933 km²
+Intensité max: 37.5 mm/jour
+Intensité moyenne: 12.1 mm/jour
+
+RANG #7: 2022-06-15
+==============================
+Localisation: Tambacounda
+Centroïde: 13.8179°N, 13.5389°W
+Surface: 268487 km²
+Intensité max: 46.9 mm/jour
+Intensité moyenne: 19.8 mm/jour
+
+RANG #8: 1985-06-27
+==============================
+Localisation: Tambacounda
+Centroïde: 13.6253°N, 13.8784°W
+Surface: 256557 km²
+Intensité max: 49.9 mm/jour
+Intensité moyenne: 18.7 mm/jour
+
+RANG #9: 1992-06-08
+==============================
+Localisation: Tambacounda
+Centroïde: 13.5621°N, 14.0357°W
+Surface: 253568 km²
+Intensité max: 42.4 mm/jour
+Intensité moyenne: 14.7 mm/jour
+
+RANG #10: 2021-08-18
+==============================
+Localisation: Tambacounda
+Centroïde: 14.3085°N, 13.2943°W
+Surface: 248649 km²
+Intensité max: 79.5 mm/jour
+Intensité moyenne: 35.6 mm/jour
+
+ANALYSE COMPARATIVE
+-------------------------
+
+Distribution régionale:
+  • Tambacounda: 10 événement(s) (100.0%)
+
+Corrélation intensité-surface: -0.690
+
+RECOMMENDATIONS
+---------------
+1. Surveillance prioritaire: Tambacounda
+2. Infrastructure adaptée aux intensités jusqu'à 80 mm/jour
+3. Systèmes d'alerte précoce pour les zones de 248649-338162 km²

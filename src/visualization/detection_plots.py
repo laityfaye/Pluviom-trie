@@ -12,28 +12,31 @@ import sys
 from pathlib import Path
 
 # Ajouter le dossier parent au path pour les imports
-sys.path.append(str(Path(__file__).parent.parent))
-
 try:
-    from config.settings import (
+    from ..config.settings import (
         SEASON_COLORS, PLOT_PARAMS, get_output_path,
         VISUALIZATION_FILENAMES
     )
 except ImportError:
-    # Valeurs par défaut
-    SEASON_COLORS = {
-        'saison_seche': '#E74C3C',
-        'saison_des_pluies': '#27AE60'
-    }
-    PLOT_PARAMS = {
-        'figure_size': (14, 6),
-        'dpi': 300,
-        'style': 'default'
-    }
-    
-    def get_output_path(key):
-        return f"outputs/visualizations/{key}.png"
-
+    try:
+        from src.config.settings import (
+            SEASON_COLORS, PLOT_PARAMS, get_output_path,
+            VISUALIZATION_FILENAMES
+        )
+    except ImportError:
+        # Valeurs par défaut
+        SEASON_COLORS = {
+            'saison_seche': '#E74C3C',
+            'saison_des_pluies': '#27AE60'
+        }
+        PLOT_PARAMS = {
+            'figure_size': (14, 6),
+            'dpi': 300,
+            'style': 'default'
+        }
+        
+        def get_output_path(key):
+            return f"outputs/visualizations/{key}.png"
 
 def create_detection_visualizations_part1(df_events: pd.DataFrame):
     """

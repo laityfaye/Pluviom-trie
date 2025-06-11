@@ -1,0 +1,73 @@
+RAPPORT SPATIAL - TOP 5 ÉVÉNEMENTS PAR INTENSITÉ DES PRÉCIPITATIONS
+================================================================================
+
+Date de génération: 2025-06-11 16:13:45
+Type d'analyse: top5_intensity_events
+Nombre d'événements: 5
+Période: 1981-2023
+
+RÉSUMÉ EXÉCUTIF
+--------------------
+• Intensité maximale: 231.4 mm/jour
+• Surface totale affectée: 439469 km²
+• Couverture moyenne: 20.86% du territoire
+• Dispersion géographique: 0.806° (lat), 1.536° (lon)
+
+ANALYSE DÉTAILLÉE PAR ÉVÉNEMENT
+----------------------------------------
+
+RANG #1: 1985-08-06
+==============================
+Localisation: Kédougou
+Centroïde: 12.6825°N, 13.2891°W
+Surface: 64177 km²
+Intensité max: 231.4 mm/jour
+Intensité moyenne: 93.9 mm/jour
+
+RANG #2: 2014-08-14
+==============================
+Localisation: Kolda
+Centroïde: 13.0710°N, 15.4911°W
+Surface: 78321 km²
+Intensité max: 193.9 mm/jour
+Intensité moyenne: 47.8 mm/jour
+
+RANG #3: 1996-08-04
+==============================
+Localisation: Kédougou
+Centroïde: 12.8935°N, 12.9642°W
+Surface: 104850 km²
+Intensité max: 136.9 mm/jour
+Intensité moyenne: 55.8 mm/jour
+
+RANG #4: 2009-08-28
+==============================
+Localisation: Diourbel
+Centroïde: 14.6655°N, 15.7140°W
+Surface: 113693 km²
+Intensité max: 132.6 mm/jour
+Intensité moyenne: 35.2 mm/jour
+
+RANG #5: 2011-08-21
+==============================
+Localisation: Kédougou
+Centroïde: 12.9124°N, 12.3555°W
+Surface: 78429 km²
+Intensité max: 129.8 mm/jour
+Intensité moyenne: 52.4 mm/jour
+
+ANALYSE COMPARATIVE
+-------------------------
+
+Distribution régionale:
+  • Kédougou: 3 événement(s) (60.0%)
+  • Kolda: 1 événement(s) (20.0%)
+  • Diourbel: 1 événement(s) (20.0%)
+
+Corrélation intensité-surface: -0.753
+
+RECOMMENDATIONS
+---------------
+1. Surveillance prioritaire: Kédougou
+2. Infrastructure adaptée aux intensités jusqu'à 231 mm/jour
+3. Systèmes d'alerte précoce pour les zones de 64177-113693 km²

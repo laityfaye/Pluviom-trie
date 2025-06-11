@@ -11,18 +11,18 @@ import sys
 from pathlib import Path
 
 # Ajouter le dossier parent au path pour les imports
-sys.path.append(str(Path(__file__).parent.parent))
-
 try:
-    from config.settings import DETECTION_CRITERIA
+    from ..config.settings import DETECTION_CRITERIA
 except ImportError:
-    # Valeurs par défaut
-    DETECTION_CRITERIA = {
-        'threshold_anomaly': 2.0,
-        'min_grid_points': 40,
-        'min_precipitation': 5.0
-    }
-
+    try:
+        from src.config.settings import DETECTION_CRITERIA
+    except ImportError:
+        # Valeurs par défaut en dernier recours
+        DETECTION_CRITERIA = {
+            'threshold_anomaly': 2.0,
+            'min_grid_points': 40,
+            'min_precipitation': 5.0
+        }
 
 def detect_extreme_precipitation_events_final(precip_data: np.ndarray, std_anomalies: np.ndarray, 
                                             dates: List, lats: np.ndarray, lons: np.ndarray) -> pd.DataFrame:

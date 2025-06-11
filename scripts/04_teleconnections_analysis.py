@@ -1,19 +1,7 @@
 #!/usr/bin/env python3
 # scripts/04_teleconnections_analysis.py
 """
-Script principal pour l'analyse des téléconnexions entre indices climatiques 
-et événements de précipitations extrêmes au Sénégal.
-
-Ce script utilise vos indices climatiques existants (IOD, Nino34, TNA) et 
-les 1439 événements extrêmes détectés pour identifier les relations 
-prédictives avec différents décalages temporels.
-
-Utilisation:
-    python scripts/04_teleconnections_analysis.py
-    python scripts/04_teleconnections_analysis.py --max-lag 18
-
-Auteur: [Votre nom]
-Date: [Date]
+Script principal pour l'analyse des téléconnexions - VERSION CORRIGÉE
 """
 
 import sys
@@ -32,9 +20,9 @@ sys.path.insert(0, str(project_root))
 sys.path.insert(0, str(project_root / "src"))
 
 try:
-    from src.data.climate_indices_loader import ClimateIndicesLoader, load_climate_indices
+    from src.data.climate_indices_loader import ClimateIndicesLoader
     from src.analysis.teleconnections import TeleconnectionsAnalyzer
-    from src.config.settings import get_output_path, create_output_directories
+    from src.config.settings import create_output_directories
     print("✅ Tous les modules importés avec succès")
 except ImportError as e:
     print(f"❌ Erreur d'import: {e}")
@@ -42,7 +30,7 @@ except ImportError as e:
     sys.exit(1)
 
 # ============================================================================
-# CLASSE PRINCIPALE D'ANALYSE DES TÉLÉCONNEXIONS
+# CLASSE PRINCIPALE D'ANALYSE DES TÉLÉCONNEXIONS - VERSION CORRIGÉE
 # ============================================================================
 
 class TeleconnectionsAnalysisMain:
@@ -51,21 +39,17 @@ class TeleconnectionsAnalysisMain:
     """
     
     def __init__(self, max_lag: int = 12):
-        """
-        Initialise l'analyse des téléconnexions.
-        
-        Args:
-            max_lag (int): Décalage temporel maximum à analyser (mois)
-        """
         self.max_lag = max_lag
-        self.indices_loader = None
-        self.teleconnections_analyzer = None
         
-        # Chemins des fichiers de données
+        # CORRECTION: Définir tous les chemins nécessaires
         self.events_file = project_root / "data/processed/extreme_events_senegal_final.csv"
-        self.indices_raw_path = project_root / "data/raw/climate_indices"
+        self.indices_raw_path = project_root / "data/raw/climate_indices"  # AJOUTÉ
         self.indices_processed_file = project_root / "data/processed/climate_indices_combined.csv"
         
+        # Initialisation des objets
+        self.indices_loader = None  # Sera initialisé dans step_1
+        self.teleconnections_analyzer = None  # Sera initialisé dans step_3
+            
     def step_1_prepare_climate_indices(self) -> bool:
         """
         Étape 1: Préparation des indices climatiques.
@@ -78,7 +62,13 @@ class TeleconnectionsAnalysisMain:
         print("="*80)
         
         try:
-            # Initialisation du loader
+            # CORRECTION: Vérifier que le dossier existe
+            if not self.indices_raw_path.exists():
+                print(f"❌ Dossier des indices climatiques non trouvé: {self.indices_raw_path}")
+                print("Créez le dossier et placez-y vos fichiers d'indices (IOD, Nino34, TNA)")
+                return False
+            
+            # Initialisation du loader avec le bon chemin
             self.indices_loader = ClimateIndicesLoader(str(self.indices_raw_path))
             
             # Chargement des indices individuels
@@ -86,9 +76,13 @@ class TeleconnectionsAnalysisMain:
             
             if not indices_dict:
                 print("❌ Échec du chargement des indices climatiques")
+                print("Vérifiez que vos fichiers d'indices sont dans le bon format :")
+                print(f"   - {self.indices_raw_path}/IOD_index.xlsx")
+                print(f"   - {self.indices_raw_path}/Nino34_index.csv")
+                print(f"   - {self.indices_raw_path}/TNA_index.csv")
                 return False
             
-            # Création du dataset combiné (IMPORTANT: utiliser la même instance)
+            # Création du dataset combiné
             combined_df = self.indices_loader.create_combined_dataset()
             
             if combined_df.empty:
@@ -114,9 +108,6 @@ class TeleconnectionsAnalysisMain:
     def step_2_verify_extreme_events(self) -> bool:
         """
         Étape 2: Vérification des événements extrêmes.
-        
-        Returns:
-            bool: True si succès, False sinon
         """
         print("\n" + "="*80)
         print("ÉTAPE 2: VÉRIFICATION DES ÉVÉNEMENTS EXTRÊMES")
@@ -168,9 +159,6 @@ class TeleconnectionsAnalysisMain:
     def step_3_analyze_teleconnections(self) -> bool:
         """
         Étape 3: Analyse des téléconnexions.
-        
-        Returns:
-            bool: True si succès, False sinon
         """
         print("\n" + "="*80)
         print("ÉTAPE 3: ANALYSE DES TÉLÉCONNEXIONS")
@@ -202,37 +190,31 @@ class TeleconnectionsAnalysisMain:
     
     def step_4_generate_ml_features(self) -> bool:
         """
-        Étape 4: Génération des features pour le machine learning.
-        
-        Returns:
-            bool: True si succès, False sinon
+        Étape 4: Génération des features ML - VERSION SIMPLIFIÉE.
         """
         print("\n" + "="*80)
         print("ÉTAPE 4: GÉNÉRATION DES FEATURES MACHINE LEARNING")
         print("="*80)
         
         try:
-            # CORRECTION: S'assurer que le loader a bien le combined_data
+            # CORRECTION: Vérifier que l'indices_loader existe
             if self.indices_loader is None:
-                print("⚠️  Loader d'indices non initialisé, re-création...")
+                print("⚠️  Loader d'indices non initialisé, initialisation...")
                 self.indices_loader = ClimateIndicesLoader(str(self.indices_raw_path))
-                # Re-charger les données et créer le dataset combiné
                 self.indices_loader.load_all_indices()
                 self.indices_loader.create_combined_dataset()
             
             # Vérifier que combined_data existe
-            if self.indices_loader.combined_data is None:
-                print("⚠️  Dataset combiné manquant, re-création...")
-                # Re-charger si nécessaire
-                if not self.indices_loader.indices_data:
-                    self.indices_loader.load_all_indices()
+            if not hasattr(self.indices_loader, 'combined_data') or self.indices_loader.combined_data is None:
+                print("🔄 Rechargement des indices...")
+                self.indices_loader.load_all_indices()
                 self.indices_loader.create_combined_dataset()
             
-            # Maintenant créer les features avec décalages
+            # Création des features avec décalages
             lagged_features = self.indices_loader.create_lagged_features(max_lag=self.max_lag)
             
             if lagged_features.empty:
-                print("❌ Échec de la création des features décalées")
+                print("❌ Échec de la création des features")
                 return False
             
             print(f"✅ Features ML générées avec succès")
@@ -260,9 +242,6 @@ class TeleconnectionsAnalysisMain:
     def step_5_prepare_ml_dataset(self) -> bool:
         """
         Étape 5: Préparation du dataset final pour ML.
-        
-        Returns:
-            bool: True si succès, False sinon
         """
         print("\n" + "="*80)
         print("ÉTAPE 5: PRÉPARATION DATASET MACHINE LEARNING")
@@ -274,6 +253,12 @@ class TeleconnectionsAnalysisMain:
             
             # Chargement des features climatiques
             features_file = project_root / "data/processed" / f"climate_features_lag{self.max_lag}.csv"
+            
+            if not features_file.exists():
+                print(f"❌ Fichier des features non trouvé: {features_file}")
+                print("Exécutez d'abord l'étape 4 (génération des features)")
+                return False
+            
             df_features = pd.read_csv(features_file, index_col=0, parse_dates=True)
             
             # Création de la série mensuelle d'événements
@@ -368,9 +353,6 @@ class TeleconnectionsAnalysisMain:
     def run_complete_analysis(self) -> bool:
         """
         Lance l'analyse complète des téléconnexions.
-        
-        Returns:
-            bool: True si succès, False sinon
         """
         print("🌊 ANALYSE COMPLÈTE DES TÉLÉCONNEXIONS OCÉAN-ATMOSPHÈRE")
         print("=" * 80)
@@ -450,7 +432,7 @@ class TeleconnectionsAnalysisMain:
         print(f"   • Features climatiques avec décalages optimaux")
         print(f"   • Période d'entraînement/test définie")
         print(f"   • Téléconnexions quantifiées et documentées")
-     
+
 # ============================================================================
 # FONCTION PRINCIPALE
 # ============================================================================
@@ -478,7 +460,7 @@ def main():
     args = parser.parse_args()
     
     print("Script d'analyse des téléconnexions océan-atmosphère")
-    print("Version intégrée avec architecture modulaire")
+    print("Version intégrée avec architecture modulaire - CORRIGÉE")
     print("="*80)
     print(f"Configuration:")
     print(f"   Décalage maximum: {args.max_lag} mois")

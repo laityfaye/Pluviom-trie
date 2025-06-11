@@ -11,23 +11,11 @@ import sys
 from pathlib import Path
 
 # Ajouter le dossier parent au path pour les imports
-sys.path.append(str(Path(__file__).parent.parent))
-
 try:
-    from config.settings import CLIMATOLOGY_PARAMS, NUMERICAL_PARAMS
+    from ..config.settings import CLIMATOLOGY_PARAMS, NUMERICAL_PARAMS
 except ImportError:
-    # Valeurs par défaut
-    CLIMATOLOGY_PARAMS = {
-        'smoothing_window': 15,
-        'min_observations': 5,
-        'n_days_year': 366
-    }
-    NUMERICAL_PARAMS = {
-        'pos_inf_replacement': 15,
-        'neg_inf_replacement': -15,
-        'nan_replacement': 0
-    }
-
+    from src.config.settings import CLIMATOLOGY_PARAMS, NUMERICAL_PARAMS
+    
 warnings.filterwarnings('ignore')
 
 

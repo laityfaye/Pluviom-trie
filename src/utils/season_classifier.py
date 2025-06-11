@@ -9,24 +9,25 @@ import sys
 from pathlib import Path
 
 # Ajouter le dossier parent au path pour les imports
-sys.path.append(str(Path(__file__).parent.parent))
-
 try:
-    from config.settings import SEASONS_SENEGAL, get_season_from_month
+    from ..config.settings import SEASONS_SENEGAL, get_season_from_month
 except ImportError:
-    # Valeurs par défaut
-    SEASONS_SENEGAL = {
-        'saison_seche': {'months': [11, 12, 1, 2, 3, 4]},
-        'saison_des_pluies': {'months': [5, 6, 7, 8, 9, 10]}
-    }
-    
-    def get_season_from_month(month: int) -> str:
-        if month in [11, 12, 1, 2, 3, 4]:
-            return 'Saison_seche'
-        elif month in [5, 6, 7, 8, 9, 10]:
-            return 'Saison_des_pluies'
-        else:
-            return 'Indetermine'
+    try:
+        from src.config.settings import SEASONS_SENEGAL, get_season_from_month  
+    except ImportError:
+        # Configuration locale si vraiment nécessaire
+        SEASONS_SENEGAL = {
+            'saison_seche': {'months': [11, 12, 1, 2, 3, 4]},
+            'saison_des_pluies': {'months': [5, 6, 7, 8, 9, 10]}
+        }
+        
+        def get_season_from_month(month: int) -> str:
+            if month in [11, 12, 1, 2, 3, 4]:
+                return 'Saison_seche'
+            elif month in [5, 6, 7, 8, 9, 10]:
+                return 'Saison_des_pluies'
+            else:
+                return 'Indetermine'
 
 
 def classify_seasons_senegal_final(df_events: pd.DataFrame) -> Tuple[pd.DataFrame, str]:

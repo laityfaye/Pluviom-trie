@@ -29,38 +29,34 @@ import numpy as np
 # ============================================================================
 
 # Ajouter le dossier racine et src au PYTHONPATH
-project_root = Path(__file__).parent.parent  # Remonte de scripts/ à la racine
-sys.path.insert(0, str(project_root))
-sys.path.insert(0, str(project_root / "src"))
+def setup_project_paths():
+    """Configure les chemins du projet de manière propre."""
+    script_dir = Path(__file__).parent
+    project_root = script_dir.parent
+    src_dir = project_root / "src"
+    
+    # Ajouter SEULEMENT si pas déjà présent
+    for path_str in [str(project_root), str(src_dir)]:
+        if path_str not in sys.path:
+            sys.path.insert(0, path_str)
+    
+    return project_root
 
-# Imports des modules du projet avec préfixe src. explicite
-try:
-    from src.config.settings import (
-        CHIRPS_FILEPATH, DETECTION_CRITERIA, PROJECT_INFO,
-        create_output_directories, print_project_info, get_output_path
-    )
-    from src.data.loader import ChirpsDataLoader
-    from src.analysis.climatology import calculate_climatology_and_anomalies
-    from src.analysis.detection import ExtremeEventDetector
-    from src.utils.season_classifier import SeasonClassifier
-    from src.visualization.detection_plots import DetectionVisualizer
-    from src.reports.detection_report import DetectionReportGenerator
-    print("✅ Tous les modules importés avec succès")
-except ImportError as e:
-    print(f"❌ Erreur d'import: {e}")
-    print("Vérifiez que tous les modules sont présents dans le dossier src/")
-    print("Structure attendue:")
-    print("  src/")
-    print("    config/settings.py")
-    print("    data/loader.py")
-    print("    analysis/climatology.py")
-    print("    analysis/detection.py")
-    print("    utils/season_classifier.py")
-    print("    visualization/detection_plots.py")
-    print("    reports/detection_report.py")
-    print("\nVérifiez aussi que tous les fichiers __init__.py sont présents")
-    sys.exit(1)
+PROJECT_ROOT = setup_project_paths()
 
+# IMPORTS DIRECTS ET SIMPLES
+from src.config.settings import (
+    CHIRPS_FILEPATH, DETECTION_CRITERIA, PROJECT_INFO,
+    create_output_directories, print_project_info, get_output_path
+)
+from src.data.loader import ChirpsDataLoader
+from src.analysis.climatology import calculate_climatology_and_anomalies
+from src.analysis.detection import ExtremeEventDetector
+from src.utils.season_classifier import SeasonClassifier
+from src.visualization.detection_plots import DetectionVisualizer
+from src.reports.detection_report import DetectionReportGenerator
+
+print("✅ Imports réussis")
 # ============================================================================
 # CLASSE PRINCIPALE D'ANALYSE
 # ============================================================================
@@ -109,7 +105,6 @@ class ExtremeEventsAnalyzer:
             print(f"❌ Fichier CHIRPS non trouvé: {self.chirps_file_path}")
             print("Veuillez placer le fichier dans le bon dossier ou ajuster le chemin dans config/settings.py")
             print("Structure attendue:")
-            print(f"  {project_root}/data/raw/chirps_WA_1981_2023_dayly.mat")
             return False
         
         # Charger les données

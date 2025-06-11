@@ -1,7 +1,7 @@
 RAPPORT D'ANALYSE DES TÉLÉCONNEXIONS
 ============================================================
 
-Date de génération: 2025-06-11 06:17:21
+Date de génération: 2025-06-11 16:13:54
 Période d'analyse: 1981-2023
 Nombre d'événements extrêmes: 1439
 Indices climatiques analysés: ['IOD', 'Nino34', 'TNA']
