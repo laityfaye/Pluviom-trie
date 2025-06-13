@@ -3,7 +3,7 @@ RAPPORT DE DÉTECTION DES ÉVÉNEMENTS EXTRÊMES
 
 Projet: Analyse des précipitations extrêmes au Sénégal
 Version: 1.0.0
-Date de génération: 2025-06-11 16:12:13
+Date de génération: 2025-06-12 01:08:38
 
 1. MÉTHODOLOGIE DE DÉTECTION
 -----------------------------------

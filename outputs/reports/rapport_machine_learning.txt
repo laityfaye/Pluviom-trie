@@ -1,0 +1,52 @@
+RAPPORT COMPLET - APPRENTISSAGE AUTOMATIQUE
+================================================================================
+
+Date de génération: 2025-06-12 01:13:33
+Période d'analyse: 1981-10-01 00:00:00 à 2023-12-01 00:00:00
+Données d'entraînement: 406 observations
+Données de test: 101 observations
+
+ANALYSE DE CLUSTERING
+------------------------------
+Nombre optimal de clusters (K-Means): 2
+Score de silhouette: 0.191
+Taux d'occurrence par cluster:
+  Cluster 0: 56.3%
+  Cluster 1: 51.7%
+
+MODÈLES DE CLASSIFICATION (OCCURRENCE)
+----------------------------------------
+Modèle               Accuracy   Precision  Recall     F1-Score  
+----------------------------------------------------------------------
+RandomForest         0.911      0.922      0.904      0.913     
+XGBoost              0.911      0.922      0.904      0.913     
+SVM                  0.911      0.922      0.904      0.913     
+Neural_Network       0.901      0.904      0.904      0.904     
+
+Meilleur modèle: RandomForest
+F1-Score: 0.913
+Paramètres optimaux: {'max_depth': 10, 'min_samples_split': 10, 'n_estimators': 50}
+
+MODÈLES DE RÉGRESSION (INTENSITÉ)
+-----------------------------------
+Modèle               MSE        MAE        R²        
+--------------------------------------------------
+RandomForest_Reg     182.57     10.48      0.799     
+XGBoost_Reg          267.13     13.89      0.706     
+SVR                  891.33     23.99      0.019     
+Neural_Network_Reg   1068.69    25.86      -0.176    
+
+Meilleur modèle: RandomForest_Reg
+R²: 0.799
+Paramètres optimaux: {'max_depth': 10, 'min_samples_split': 2, 'n_estimators': 200}
+
+RECOMMANDATIONS ET CONCLUSIONS
+-----------------------------------
+• Excellente performance de classification (F1 > 0.7)
+• Bonne capacité de prédiction de l'intensité (R² > 0.6)
+
+APPLICATIONS OPÉRATIONNELLES SUGGÉRÉES:
+• Système d'alerte précoce basé sur les téléconnexions
+• Classification automatique des conditions à risque
+• Intégration dans les modèles de prévision météorologique
+• Aide à la décision pour la gestion des ressources en eau

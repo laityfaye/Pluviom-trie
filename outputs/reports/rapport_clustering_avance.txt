@@ -1,0 +1,119 @@
+RAPPORT COMPLET - ANALYSE DE CLUSTERING AVANCÉE
+================================================================================
+
+Date de génération: 2025-06-12 01:15:31
+Période d'analyse: 1981-10-01 00:00:00 à 2023-12-01 00:00:00
+Nombre d'observations: 507
+Nombre de features: 41
+
+ALGORITHMES TESTÉS
+-------------------------
+• KMeans: 2 clusters
+• DBSCAN: 2 clusters
+  - Points aberrants détectés: 16
+• Hierarchical: 2 clusters
+• GaussianMixture: 5 clusters
+• Spectral: 2 clusters
+
+MÉTRIQUES COMPARATIVES
+------------------------------
+Algorithme      Clusters   Silhouette   Calinski-H   Davies-B     Var.Occur.  
+-------------------------------------------------------------------------------------
+KMeans          2          0.191        149.8        1.740        0.0005      
+DBSCAN          2          0.256        17.1         0.949        0.0738      
+Hierarchical    2          0.255        28.8         1.267        0.0049      
+GaussianMixture 5          0.033        29.4         3.299        0.1837      
+Spectral        2          0.196        141.7        1.700        0.0006      
+
+CLASSEMENT PAR CRITÈRE
+-------------------------
+Meilleur Silhouette: DBSCAN (0.256)
+Meilleur Calinski-Harabasz: KMeans (149.8)
+Meilleur Davies-Bouldin: DBSCAN (0.949)
+Meilleure séparation événements: GaussianMixture (0.1837)
+
+ANALYSE DÉTAILLÉE PAR ALGORITHME
+----------------------------------------
+
+KMEANS
+======
+Nombre de clusters: 2
+Méthode d'optimisation: Silhouette + Coude + Calinski-Harabasz
+
+Relation avec les événements extrêmes:
+  Cluster 0: 56.3% d'occurrence, 52.5 mm d'intensité moyenne
+  Cluster 1: 51.7% d'occurrence, 50.8 mm d'intensité moyenne
+
+------------------------------------------------------------
+
+DBSCAN
+======
+Nombre de clusters: 2
+Paramètres optimaux: eps=5.507, min_samples=8
+Points aberrants: 16
+
+Relation avec les événements extrêmes:
+  Cluster 0: 54.3% d'occurrence, 51.8 mm d'intensité moyenne
+  Cluster 1: 0.0% d'occurrence, 0.0 mm d'intensité moyenne
+
+------------------------------------------------------------
+
+HIERARCHICAL
+============
+Nombre de clusters: 2
+Méthode de linkage: average
+
+Relation avec les événements extrêmes:
+  Cluster 0: 54.1% d'occurrence, 51.9 mm d'intensité moyenne
+  Cluster 1: 40.0% d'occurrence, 39.9 mm d'intensité moyenne
+
+------------------------------------------------------------
+
+GAUSSIANMIXTURE
+===============
+Nombre de clusters: 5
+Type de covariance: tied
+BIC: 19490.54
+
+Relation avec les événements extrêmes:
+  Cluster 0: 4.9% d'occurrence, 8.1 mm d'intensité moyenne
+  Cluster 1: 97.9% d'occurrence, 56.6 mm d'intensité moyenne
+  Cluster 2: 13.5% d'occurrence, 7.1 mm d'intensité moyenne
+  Cluster 3: 11.7% d'occurrence, 8.8 mm d'intensité moyenne
+  Cluster 4: 96.7% d'occurrence, 53.9 mm d'intensité moyenne
+
+------------------------------------------------------------
+
+SPECTRAL
+========
+Nombre de clusters: 2
+Type d'affinité: nearest_neighbors
+
+Relation avec les événements extrêmes:
+  Cluster 0: 51.9% d'occurrence, 50.9 mm d'intensité moyenne
+  Cluster 1: 57.0% d'occurrence, 52.7 mm d'intensité moyenne
+
+------------------------------------------------------------
+
+RECOMMANDATIONS
+--------------------
+ALGORITHME RECOMMANDÉ: GaussianMixture
+Score composite: 0.516
+
+Justification:
+• Bon équilibre entre qualité du clustering (Silhouette: 0.033)
+• Bonne séparation des conditions à risque (Variance: 0.1837)
+• 5 clusters identifiés
+
+APPLICATIONS OPÉRATIONNELLES:
+• Classification automatique des conditions climatiques
+• Identification des régimes météorologiques à risque
+• Amélioration des modèles de prévision
+• Stratification des données pour l'apprentissage automatique
+• Analyse des téléconnexions par type de conditions
+
+PROCHAINES ÉTAPES SUGGÉRÉES:
+• Validation temporelle des clusters
+• Analyse saisonnière du clustering
+• Intégration dans les modèles prédictifs
+• Tests sur d'autres régions d'Afrique de l'Ouest
