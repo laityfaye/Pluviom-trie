@@ -1,7 +1,7 @@
 RAPPORT COMPLET - APPRENTISSAGE AUTOMATIQUE
 ================================================================================
 
-Date de génération: 2025-06-12 01:13:33
+Date de génération: 2025-06-15 01:03:10
 Période d'analyse: 1981-10-01 00:00:00 à 2023-12-01 00:00:00
 Données d'entraînement: 406 observations
 Données de test: 101 observations

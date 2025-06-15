@@ -1,0 +1,42 @@
+{
+  "timestamp": "2025-06-13 14:58:16",
+  "overall_status": "EXCELLENT",
+  "success_rate": 95.23809523809523,
+  "total_checks": 21,
+  "passed_checks": 20,
+  "results": {
+    "docker_installation": {
+      "docker_installed": true,
+      "docker_compose": true,
+      "docker_running": true,
+      "wsl2": true
+    },
+    "docker_structure": {
+      "docker-compose.yml": true,
+      ".env": true,
+      ".dockerignore": true,
+      "docker/api/Dockerfile": true,
+      "docker/ml-pipeline/Dockerfile": true,
+      "docker/timescaledb/init-scripts": true,
+      "services/api/main.py": true,
+      "services/api/requirements.txt": true,
+      "docker/scripts/startup.ps1": true,
+      "docker/scripts/deploy.ps1": true,
+      "monitoring/prometheus.yml": true
+    },
+    "docker_compose": {
+      "compose_syntax": true,
+      "all_services": true
+    },
+    "environment": {
+      "env_file_exists": true,
+      "all_vars_present": true
+    },
+    "project_compatibility": {
+      "project_compatible": true,
+      "compatibility_score": 1.0
+    }
+  },
+  "issues_found": [],
+  "fixes_applied": []
+}

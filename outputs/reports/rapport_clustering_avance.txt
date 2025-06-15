@@ -1,7 +1,7 @@
 RAPPORT COMPLET - ANALYSE DE CLUSTERING AVANCÉE
 ================================================================================
 
-Date de génération: 2025-06-12 01:15:31
+Date de génération: 2025-06-15 01:06:51
 Période d'analyse: 1981-10-01 00:00:00 à 2023-12-01 00:00:00
 Nombre d'observations: 507
 Nombre de features: 41
