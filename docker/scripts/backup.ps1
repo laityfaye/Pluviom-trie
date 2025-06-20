@@ -11,7 +11,7 @@ if (-not (Test-Path $backupDir)) {
 }
 
 Write-Host "📊 Sauvegarde base de données..." -ForegroundColor Yellow
-docker-compose exec -T timescaledb pg_dump -U climate_user climate_db > "$backupDir/db_$BackupName.sql"
+docker-compose exec -T timescaledb pg_dump -U postgres climatsn_db > "$backupDir/db_$BackupName.sql"
 
 Write-Host "🤖 Sauvegarde modèles ML..." -ForegroundColor Yellow
 docker cp climate-ml-pipeline:/app/outputs/models "$backupDir/models_$BackupName"

@@ -1,0 +1,99 @@
+{
+  "deployment_info": {
+    "method": "docker_exec",
+    "timestamp": "2025-06-20T01:23:18.715221",
+    "total_models": 9,
+    "deployment_path": "c:\\Users\\laity\\Desktop\\Mémoire Master\\Mémoire\\Traitement\\services\\api\\models"
+  },
+  "models": {
+    "feature_scaler.pkl": {
+      "path": "c:\\Users\\laity\\Desktop\\Mémoire Master\\Mémoire\\Traitement\\services\\api\\models\\feature_scaler.pkl",
+      "size_mb": 0.0,
+      "deployed_at": "2025-06-20T01:23:17.479404",
+      "status": "active",
+      "type": "preprocessing"
+    },
+    "neural_network_classifier.pkl": {
+      "path": "c:\\Users\\laity\\Desktop\\Mémoire Master\\Mémoire\\Traitement\\services\\api\\models\\neural_network_classifier.pkl",
+      "size_mb": 0.15,
+      "deployed_at": "2025-06-20T01:23:17.679873",
+      "status": "active",
+      "type": "classification"
+    },
+    "neural_network_reg_regressor.pkl": {
+      "path": "c:\\Users\\laity\\Desktop\\Mémoire Master\\Mémoire\\Traitement\\services\\api\\models\\neural_network_reg_regressor.pkl",
+      "size_mb": 0.09,
+      "deployed_at": "2025-06-20T01:23:17.719676",
+      "status": "active",
+      "type": "regression"
+    },
+    "randomforest_classifier.pkl": {
+      "path": "c:\\Users\\laity\\Desktop\\Mémoire Master\\Mémoire\\Traitement\\services\\api\\models\\randomforest_classifier.pkl",
+      "size_mb": 0.17,
+      "deployed_at": "2025-06-20T01:23:18.185144",
+      "status": "active",
+      "type": "classification"
+    },
+    "randomforest_reg_regressor.pkl": {
+      "path": "c:\\Users\\laity\\Desktop\\Mémoire Master\\Mémoire\\Traitement\\services\\api\\models\\randomforest_reg_regressor.pkl",
+      "size_mb": 2.92,
+      "deployed_at": "2025-06-20T01:23:18.369390",
+      "status": "active",
+      "type": "regression"
+    },
+    "svm_classifier.pkl": {
+      "path": "c:\\Users\\laity\\Desktop\\Mémoire Master\\Mémoire\\Traitement\\services\\api\\models\\svm_classifier.pkl",
+      "size_mb": 0.05,
+      "deployed_at": "2025-06-20T01:23:18.391345",
+      "status": "active",
+      "type": "classification"
+    },
+    "svr_regressor.pkl": {
+      "path": "c:\\Users\\laity\\Desktop\\Mémoire Master\\Mémoire\\Traitement\\services\\api\\models\\svr_regressor.pkl",
+      "size_mb": 0.08,
+      "deployed_at": "2025-06-20T01:23:18.411570",
+      "status": "active",
+      "type": "regression"
+    },
+    "xgboost_classifier.pkl": {
+      "path": "c:\\Users\\laity\\Desktop\\Mémoire Master\\Mémoire\\Traitement\\services\\api\\models\\xgboost_classifier.pkl",
+      "size_mb": 0.05,
+      "deployed_at": "2025-06-20T01:23:18.556771",
+      "status": "active",
+      "type": "classification"
+    },
+    "xgboost_reg_regressor.pkl": {
+      "path": "c:\\Users\\laity\\Desktop\\Mémoire Master\\Mémoire\\Traitement\\services\\api\\models\\xgboost_reg_regressor.pkl",
+      "size_mb": 0.43,
+      "deployed_at": "2025-06-20T01:23:18.715140",
+      "status": "active",
+      "type": "regression"
+    }
+  },
+  "api_endpoints": {
+    "predict_occurrence": {
+      "model": "randomforest_classifier.pkl",
+      "description": "Prediction d'occurrence d'evenements extremes",
+      "input_features": [
+        "IOD",
+        "Nino34",
+        "TNA",
+        "month",
+        "season"
+      ],
+      "output": "probability"
+    },
+    "predict_intensity": {
+      "model": "randomforest_regressor.pkl",
+      "description": "Prediction d'intensite des precipitations",
+      "input_features": [
+        "IOD",
+        "Nino34",
+        "TNA",
+        "month",
+        "season"
+      ],
+      "output": "intensity_mm"
+    }
+  }
+}

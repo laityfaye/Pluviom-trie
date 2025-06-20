@@ -1,0 +1,88 @@
+{
+  "deployment_type": "docker_exec",
+  "models": {
+    "feature_scaler.pkl": {
+      "path": "c:\\Users\\laity\\Desktop\\M\u00e9moire Master\\M\u00e9moire\\Traitement\\services\\api\\models\\feature_scaler.pkl",
+      "size_mb": 0.0025320053100585938,
+      "deployed_at": "2025-06-20 00:01:41.240503",
+      "status": "active"
+    },
+    "neural_network_classifier.pkl": {
+      "path": "c:\\Users\\laity\\Desktop\\M\u00e9moire Master\\M\u00e9moire\\Traitement\\services\\api\\models\\neural_network_classifier.pkl",
+      "size_mb": 0.14691925048828125,
+      "deployed_at": "2025-06-20 00:01:42.328055",
+      "status": "active"
+    },
+    "neural_network_reg_regressor.pkl": {
+      "path": "c:\\Users\\laity\\Desktop\\M\u00e9moire Master\\M\u00e9moire\\Traitement\\services\\api\\models\\neural_network_reg_regressor.pkl",
+      "size_mb": 0.0918874740600586,
+      "deployed_at": "2025-06-20 00:01:42.964401",
+      "status": "active"
+    },
+    "randomforest_classifier.pkl": {
+      "path": "c:\\Users\\laity\\Desktop\\M\u00e9moire Master\\M\u00e9moire\\Traitement\\services\\api\\models\\randomforest_classifier.pkl",
+      "size_mb": 0.16516971588134766,
+      "deployed_at": "2025-06-20 00:01:44.914401",
+      "status": "active"
+    },
+    "randomforest_reg_regressor.pkl": {
+      "path": "c:\\Users\\laity\\Desktop\\M\u00e9moire Master\\M\u00e9moire\\Traitement\\services\\api\\models\\randomforest_reg_regressor.pkl",
+      "size_mb": 2.921219825744629,
+      "deployed_at": "2025-06-20 00:01:45.325647",
+      "status": "active"
+    },
+    "svm_classifier.pkl": {
+      "path": "c:\\Users\\laity\\Desktop\\M\u00e9moire Master\\M\u00e9moire\\Traitement\\services\\api\\models\\svm_classifier.pkl",
+      "size_mb": 0.05208873748779297,
+      "deployed_at": "2025-06-20 00:01:45.682161",
+      "status": "active"
+    },
+    "svr_regressor.pkl": {
+      "path": "c:\\Users\\laity\\Desktop\\M\u00e9moire Master\\M\u00e9moire\\Traitement\\services\\api\\models\\svr_regressor.pkl",
+      "size_mb": 0.07533645629882812,
+      "deployed_at": "2025-06-20 00:01:46.048105",
+      "status": "active"
+    },
+    "xgboost_classifier.pkl": {
+      "path": "c:\\Users\\laity\\Desktop\\M\u00e9moire Master\\M\u00e9moire\\Traitement\\services\\api\\models\\xgboost_classifier.pkl",
+      "size_mb": 0.054772377014160156,
+      "deployed_at": "2025-06-20 00:01:46.676586",
+      "status": "active"
+    },
+    "xgboost_reg_regressor.pkl": {
+      "path": "c:\\Users\\laity\\Desktop\\M\u00e9moire Master\\M\u00e9moire\\Traitement\\services\\api\\models\\xgboost_reg_regressor.pkl",
+      "size_mb": 0.4331350326538086,
+      "deployed_at": "2025-06-20 00:01:47.102748",
+      "status": "active"
+    }
+  },
+  "api_version": "1.0.0",
+  "deployment_date": "2025-06-20T00:01:47.105077",
+  "database_connection": "docker-compose exec timescaledb",
+  "endpoints": {
+    "predict_occurrence": {
+      "model": "randomforest_classifier.pkl",
+      "description": "Pr\u00e9diction d'occurrence d'\u00e9v\u00e9nements extr\u00eames",
+      "input_features": [
+        "IOD",
+        "Nino34",
+        "TNA",
+        "month",
+        "season"
+      ],
+      "output": "probability"
+    },
+    "predict_intensity": {
+      "model": "randomforest_regressor.pkl",
+      "description": "Pr\u00e9diction d'intensit\u00e9 des pr\u00e9cipitations",
+      "input_features": [
+        "IOD",
+        "Nino34",
+        "TNA",
+        "month",
+        "season"
+      ],
+      "output": "intensity_mm"
+    }
+  }
+}

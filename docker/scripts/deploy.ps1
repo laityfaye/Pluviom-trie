@@ -1,54 +1,60 @@
-# deploy.ps1 - Script de déploiement Docker
+# startup.ps1 - Script de demarrage du projet Docker
 param(
-    [string]$Environment = "dev",
+    [string]$Action = "start",
     [switch]$Build = $false,
-    [switch]$Migrate = $false,
     [switch]$Reset = $false
 )
 
-Write-Host "🚀 Déploiement Docker - Environnement: $Environment" -ForegroundColor Green
-Write-Host "=" * 60
+# Configuration de l'encodage
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+$OutputEncoding = [System.Text.Encoding]::UTF8
 
-if ($Reset) {
-    Write-Host "🔄 Réinitialisation complète..." -ForegroundColor Red
-    docker-compose down -v
-    docker system prune -f
-    $Build = $true
-}
+Write-Host "DOCKER - Gestion Projet Climat Senegal" -ForegroundColor Green
+Write-Host "=" * 50
 
-if ($Build) {
-    Write-Host "🔨 Construction des images Docker..." -ForegroundColor Yellow
-    docker-compose build --no-cache
-}
-
-if ($Migrate) {
-    Write-Host "📊 Migration base de données..." -ForegroundColor Yellow
-    docker-compose run --rm ml-pipeline python -c "print('Migration simulée - à implémenter')"
-}
-
-Write-Host "▶️ Démarrage des services..." -ForegroundColor Yellow
-docker-compose up -d
-
-Write-Host "🏥 Vérification de la santé des services..." -ForegroundColor Yellow
-Start-Sleep -Seconds 30
-
-$services = @("timescaledb", "redis", "api")
-foreach ($service in $services) {
-    $status = docker-compose ps -q $service
-    if ($status) {
-        $health = docker inspect $status --format='{{.State.Status}}'
-        if ($health -eq "running") {
-            Write-Host "✅ $service: Running" -ForegroundColor Green
+switch ($Action.ToLower()) {
+    "start" {
+        Write-Host ">> Demarrage des services..." -ForegroundColor Yellow
+        if ($Build) {
+            docker-compose up -d --build
         } else {
-            Write-Host "❌ $service: $health" -ForegroundColor Red
+            docker-compose up -d
         }
-    } else {
-        Write-Host "❌ $service: Not found" -ForegroundColor Red
+        
+        Write-Host ">> Verification de la sante..." -ForegroundColor Yellow
+        Start-Sleep -Seconds 10
+        docker-compose ps
+        
+        Write-Host ">> Services disponibles:" -ForegroundColor Cyan
+        Write-Host "  API: http://localhost:8000" -ForegroundColor White
+        Write-Host "  Dashboard: http://localhost:3000" -ForegroundColor White
+        Write-Host "  Grafana: http://localhost:3001" -ForegroundColor White
+        Write-Host "  Prometheus: http://localhost:9090" -ForegroundColor White
+    }
+    
+    "stop" {
+        Write-Host ">> Arret des services..." -ForegroundColor Yellow
+        docker-compose down
+    }
+    
+    "logs" {
+        Write-Host ">> Logs des services..." -ForegroundColor Yellow
+        docker-compose logs -f
+    }
+    
+    "ml" {
+        Write-Host ">> Execution du pipeline ML..." -ForegroundColor Yellow
+        docker-compose run --rm ml-pipeline python main.py --only-ml
+    }
+    
+    "reset" {
+        Write-Host ">> Reinitialisation complete..." -ForegroundColor Red
+        docker-compose down -v
+        docker system prune -f
+        docker-compose up -d --build
+    }
+    
+    default {
+        Write-Host "Usage: ./startup.ps1 [start|stop|logs|ml|reset] [-Build] [-Reset]" -ForegroundColor Yellow
     }
 }
-
-Write-Host "🎉 Déploiement terminé!" -ForegroundColor Green
-Write-Host "🌐 Services disponibles:" -ForegroundColor Cyan
-Write-Host "  Dashboard: http://localhost:3000" -ForegroundColor White
-Write-Host "  API: http://localhost:8000" -ForegroundColor White
-Write-Host "  Grafana: http://localhost:3001" -ForegroundColor White
