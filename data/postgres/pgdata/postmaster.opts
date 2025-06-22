@@ -1,1 +1,0 @@
-/usr/local/bin/postgres "-c" "shared_preload_libraries=timescaledb" "-c" "max_connections=200" "-c" "shared_buffers=256MB" "-c" "effective_cache_size=1GB" "-c" "work_mem=16MB"
