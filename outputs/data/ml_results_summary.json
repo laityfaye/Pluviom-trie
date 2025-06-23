@@ -4,7 +4,7 @@
       "test_accuracy": 0.9108910891089109,
       "test_precision": 0.9215686274509803,
       "test_recall": 0.9038461538461539,
-      "test_f1": 0.9126213592233009,
+      "test_f1": 0.912621359223301,
       "best_params": {
         "max_depth": 10,
         "min_samples_split": 10,
@@ -15,7 +15,7 @@
       "test_accuracy": 0.9108910891089109,
       "test_precision": 0.9215686274509803,
       "test_recall": 0.9038461538461539,
-      "test_f1": 0.9126213592233009,
+      "test_f1": 0.912621359223301,
       "best_params": {
         "learning_rate": 0.01,
         "max_depth": 3,
@@ -26,7 +26,7 @@
       "test_accuracy": 0.9108910891089109,
       "test_precision": 0.9215686274509803,
       "test_recall": 0.9038461538461539,
-      "test_f1": 0.9126213592233009,
+      "test_f1": 0.912621359223301,
       "best_params": {
         "C": 0.1,
         "gamma": "scale",
@@ -49,9 +49,9 @@
   },
   "regression_results": {
     "RandomForest_Reg": {
-      "test_mse": 182.5676311600567,
-      "test_mae": 10.482852259444893,
-      "test_r2": 0.7990998571147429,
+      "test_mse": 190.09541900303321,
+      "test_mae": 10.703206630777117,
+      "test_r2": 0.7908161696764511,
       "best_params": {
         "max_depth": 10,
         "min_samples_split": 2,
@@ -59,9 +59,9 @@
       }
     },
     "XGBoost_Reg": {
-      "test_mse": 267.1272117396108,
-      "test_mae": 13.886661630410414,
-      "test_r2": 0.7060492341055827,
+      "test_mse": 267.1272155663352,
+      "test_mae": 13.886661647488875,
+      "test_r2": 0.7060492334381886,
       "best_params": {
         "learning_rate": 0.01,
         "max_depth": 6,
@@ -69,9 +69,9 @@
       }
     },
     "SVR": {
-      "test_mse": 891.3347093084813,
-      "test_mae": 23.993922297549133,
-      "test_r2": 0.019161998647650114,
+      "test_mse": 891.3347122852248,
+      "test_mae": 23.993922245568147,
+      "test_r2": 0.01916200719604577,
       "best_params": {
         "C": 1,
         "gamma": "scale",
@@ -79,9 +79,9 @@
       }
     },
     "Neural_Network_Reg": {
-      "test_mse": 1068.6941732836804,
-      "test_mae": 25.860178156544446,
-      "test_r2": -0.17600699942864084,
+      "test_mse": 1068.6941886648476,
+      "test_mae": 25.8601781500196,
+      "test_r2": -0.17600700217748622,
       "best_params": {
         "alpha": 0.001,
         "hidden_layer_sizes": [

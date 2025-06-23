@@ -5,7 +5,7 @@
 Analyse spatiale des 5 précipitations extrêmes les plus intenses au Sénégal.
 VERSION REFACTORISÉE utilisant les modules centralisés.
 
-Auteur: Analyse Précipitations Extrêmes  
+Auteur: Laity FAYE  
 Date: 2025
 """
 

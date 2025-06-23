@@ -1,7 +1,7 @@
 RAPPORT COMPLET - APPRENTISSAGE AUTOMATIQUE
 ================================================================================
 
-Date de génération: 2025-06-20 04:54:53
+Date de génération: 2025-06-23 13:24:23
 Période d'analyse: 1981-10-01 00:00:00 à 2023-12-01 00:00:00
 Données d'entraînement: 406 observations
 Données de test: 101 observations
@@ -31,13 +31,13 @@ MODÈLES DE RÉGRESSION (INTENSITÉ)
 -----------------------------------
 Modèle               MSE        MAE        R²        
 --------------------------------------------------
-RandomForest_Reg     182.57     10.48      0.799     
+RandomForest_Reg     190.10     10.70      0.791     
 XGBoost_Reg          267.13     13.89      0.706     
 SVR                  891.33     23.99      0.019     
 Neural_Network_Reg   1068.69    25.86      -0.176    
 
 Meilleur modèle: RandomForest_Reg
-R²: 0.799
+R²: 0.791
 Paramètres optimaux: {'max_depth': 10, 'min_samples_split': 2, 'n_estimators': 200}
 
 RECOMMANDATIONS ET CONCLUSIONS

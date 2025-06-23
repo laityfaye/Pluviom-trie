@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated_at": "2025-06-13T23:35:37.691511",
+    "generated_at": "2025-06-23T13:20:38.486693",
     "project_title": "Analyse des précipitations extrêmes au Sénégal",
     "version": "1.0.0",
     "total_events": 1439
@@ -12,9 +12,9 @@
     "annual_frequency": 33.46511627906977
   },
   "precipitation_stats": {
-    "mean": 40.77589674804507,
+    "mean": 40.77589797973633,
     "median": 37.404659271240234,
-    "std": 22.915433818608527,
+    "std": 22.915433883666992,
     "min": 5.072746753692627,
     "max": 231.35137939453125,
     "quantiles": {
@@ -34,11 +34,11 @@
     "max_points": 451
   },
   "anomaly_stats": {
-    "mean": 6.469260065954074,
-    "median": 5.391616857669967,
-    "std": 3.7622671665704868,
-    "min": 2.6493399043370194,
-    "max": 37.78790907688919
+    "mean": 6.469259738922119,
+    "median": 5.391617298126221,
+    "std": 3.7622671127319336,
+    "min": 2.6493399143218994,
+    "max": 37.78791046142578
   },
   "seasonal_distribution": {
     "Saison_des_pluies": {
@@ -109,17 +109,17 @@
   "seasonal_analysis": {
     "Saison_seche": {
       "count": 31,
-      "avg_precipitation": 7.874782131564233,
+      "avg_precipitation": 7.874782562255859,
       "avg_coverage": 17.85138248847927,
-      "avg_anomaly": 9.955295967327068,
+      "avg_anomaly": 9.95529556274414,
       "median_precipitation": 7.175772666931152
     },
     "Saison_des_pluies": {
       "count": 1408,
-      "avg_precipitation": 41.50028208406134,
+      "avg_precipitation": 41.50027847290039,
       "avg_coverage": 18.66413859577922,
-      "avg_anomaly": 6.392507855057366,
-      "median_precipitation": 38.06651496887207
+      "avg_anomaly": 6.392507553100586,
+      "median_precipitation": 38.06651306152344
     }
   },
   "top_events": [
@@ -127,35 +127,35 @@
       "date": "1996-11-08",
       "coverage_percent": 80.53571428571429,
       "max_precipitation": 8.068958282470703,
-      "max_anomaly": 12.353011126521217,
+      "max_anomaly": 12.353011131286621,
       "season": "Saison_seche"
     },
     {
       "date": "2012-09-28",
       "coverage_percent": 78.21428571428571,
       "max_precipitation": 44.27000427246094,
-      "max_anomaly": 7.659171294206931,
+      "max_anomaly": 7.659171104431152,
       "season": "Saison_des_pluies"
     },
     {
       "date": "2000-10-16",
       "coverage_percent": 69.46428571428571,
       "max_precipitation": 30.6770076751709,
-      "max_anomaly": 16.129161469710567,
+      "max_anomaly": 16.129159927368164,
       "season": "Saison_des_pluies"
     },
     {
       "date": "2018-06-27",
       "coverage_percent": 68.03571428571429,
       "max_precipitation": 37.518516540527344,
-      "max_anomaly": 9.727993779798373,
+      "max_anomaly": 9.727993965148926,
       "season": "Saison_des_pluies"
     },
     {
       "date": "2022-10-24",
       "coverage_percent": 66.96428571428571,
       "max_precipitation": 56.448570251464844,
-      "max_anomaly": 11.530818084908908,
+      "max_anomaly": 11.530818939208984,
       "season": "Saison_des_pluies"
     }
   ]
