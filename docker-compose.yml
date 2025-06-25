@@ -98,6 +98,7 @@ services:
       - "8000:8000"
     volumes:
       - ml_models:/app/models:ro
+      - ./outputs:/app/outputs:ro
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
       interval: 30s

@@ -1,0 +1,2431 @@
+/* services/dashboard/dist/css/dashboard.css - VERSION THÈME BLANC PREMIUM */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@400;500;600;700;800;900&display=swap');
+
+/* ============================================================================
+   VARIABLES CSS ET RESET - THÈME BLANC
+   ============================================================================ */
+
+:root {
+    /* Couleurs principales */
+    --primary-blue: #2563EB;
+    --primary-purple: #8B5CF6;
+    --primary-emerald: #10B981;
+    --accent-electric: #0EA5E9;
+    --accent-quantum: #7C3AED;
+    
+    /* Backgrounds - Version Blanche */
+    --bg-primary: #FFFFFF;
+    --bg-secondary: #F8FAFC;
+    --bg-tertiary: #F1F5F9;
+    --bg-accent: #EFF6FF;
+    --bg-card: #FFFFFF;
+    --glass-primary: rgba(255, 255, 255, 0.95);
+    --glass-secondary: rgba(255, 255, 255, 0.85);
+    --glass-border: rgba(226, 232, 240, 0.8);
+    --glass-hover: rgba(37, 99, 235, 0.08);
+    
+    /* Couleurs de texte - Version Claire */
+    --text-primary: #0F172A;
+    --text-secondary: #334155;
+    --text-tertiary: #64748B;
+    --text-muted: #94A3B8;
+    --text-white: #FFFFFF;
+    
+    /* Gradients adaptés au thème clair */
+    --gradient-primary: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-purple) 100%);
+    --gradient-secondary: linear-gradient(135deg, var(--primary-emerald) 0%, var(--accent-electric) 100%);
+    --gradient-neural: linear-gradient(135deg, var(--accent-electric) 0%, var(--accent-quantum) 50%, #E11D48 100%);
+    
+    /* Ombres adaptées au thème clair */
+    --shadow-sm: 0 1px 3px 0 rgba(15, 23, 42, 0.08);
+    --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.1);
+    --shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.15);
+    --shadow-2xl: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
+    --shadow-colored: 0 20px 40px -12px rgba(37, 99, 235, 0.25);
+    --shadow-glow: 0 0 40px rgba(37, 99, 235, 0.15);
+    
+    /* Rayons et espacements */
+    --radius-sm: 0.5rem;
+    --radius-md: 0.75rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.5rem;
+    --radius-2xl: 2rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 3rem;
+    --space-3xl: 4rem;
+    
+    /* Polices */
+    --font-heading: 'Outfit', sans-serif;
+    --font-primary: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+}
+
+body {
+    font-family: var(--font-primary);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.7;
+    font-weight: 400;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Background animé subtil pour thème blanc */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 15% 85%, rgba(37, 99, 235, 0.02) 0%, transparent 50%),
+        radial-gradient(circle at 85% 15%, rgba(139, 92, 246, 0.02) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.015) 0%, transparent 50%);
+    animation: backgroundFlow 30s ease-in-out infinite;
+    z-index: -1;
+}
+
+@keyframes backgroundFlow {
+    0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    50% { transform: scale(1.05) rotate(180deg); opacity: 0.8; }
+}
+
+/* ============================================================================
+   NAVIGATION - THÈME BLANC
+   ============================================================================ */
+
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: var(--space-lg) var(--space-xl);
+    background: var(--glass-primary);
+    backdrop-filter: blur(24px) saturate(180%);
+    border-bottom: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+}
+
+.nav.scrolled {
+    padding: var(--space-md) var(--space-xl);
+    box-shadow: var(--shadow-lg);
+    background: rgba(255, 255, 255, 0.98);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+}
+
+.nav-content {
+    max-width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.brand:hover {
+    transform: scale(1.02);
+}
+
+.logo-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--gradient-neural);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    box-shadow: var(--shadow-colored);
+    animation: logoGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes logoGlow {
+    0% { box-shadow: var(--shadow-colored); transform: scale(1); }
+    100% { box-shadow: 0 20px 60px -12px rgba(37, 99, 235, 0.4); transform: scale(1.05); }
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-name {
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    font-weight: 800;
+    background: var(--gradient-primary);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+}
+
+.brand-subtitle {
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 2px;
+}
+
+.system-status {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-lg);
+    background: var(--bg-secondary);
+    border: 2px solid var(--glass-border);
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+}
+
+.status-pulse {
+    width: 10px;
+    height: 10px;
+    background: var(--primary-emerald);
+    border-radius: 50%;
+    position: relative;
+    animation: statusPulse 2s ease-in-out infinite;
+}
+
+.status-pulse::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    background: var(--primary-emerald);
+    border-radius: 50%;
+    opacity: 0.3;
+    animation: statusRipple 2s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.1); }
+}
+
+@keyframes statusRipple {
+    0% { transform: scale(1); opacity: 0.3; }
+    100% { transform: scale(2.5); opacity: 0; }
+}
+
+/* ============================================================================
+   HERO SECTION - THÈME BLANC
+   ============================================================================ */
+
+.hero {
+    padding: 10rem var(--space-xl) 8rem;
+    background: linear-gradient(135deg, 
+        rgba(37, 99, 235, 0.05) 0%, 
+        rgba(139, 92, 246, 0.03) 50%, 
+        rgba(16, 185, 129, 0.02) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-lg);
+    background: var(--bg-card);
+    border: 2px solid var(--glass-border);
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-2xl);
+    box-shadow: var(--shadow-sm);
+    animation: badgeFloat 3s ease-in-out infinite alternate;
+}
+
+@keyframes badgeFloat {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-4px); }
+}
+
+.badge-icon {
+    width: 20px;
+    height: 20px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    color: white;
+}
+
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: clamp(3.5rem, 10vw, 8rem);
+    font-weight: 900;
+    line-height: 0.95;
+    margin-bottom: var(--space-xl);
+    background: var(--gradient-neural);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: titleGlow 6s ease-in-out infinite;
+}
+
+@keyframes titleGlow {
+    0%, 100% { filter: drop-shadow(0 0 20px rgba(37, 99, 235, 0.15)); }
+    50% { filter: drop-shadow(0 0 40px rgba(139, 92, 246, 0.2)); }
+}
+
+.hero-subtitle {
+    font-size: clamp(1.125rem, 2vw, 1.5rem);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-3xl);
+    font-weight: 400;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+.hero-actions {
+    display: flex;
+    gap: var(--space-lg);
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: var(--space-3xl);
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-lg) var(--space-2xl);
+    border-radius: var(--radius-xl);
+    font-weight: 600;
+    font-size: 1.125rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-primary);
+}
+
+.btn-primary {
+    background: var(--gradient-primary);
+    color: var(--text-white);
+    box-shadow: var(--shadow-colored);
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.btn-primary:hover::before {
+    left: 100%;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-xl);
+}
+
+.btn-secondary {
+    background: var(--bg-card);
+    border: 2px solid var(--glass-border);
+    color: var(--text-primary);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary:hover {
+    border-color: var(--primary-blue);
+    transform: translateY(-2px);
+    background: var(--bg-secondary);
+    box-shadow: var(--shadow-md);
+}
+
+/* ============================================================================
+   MÉTRIQUES - THÈME BLANC
+   ============================================================================ */
+
+.metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-xl);
+    margin-top: var(--space-3xl);
+}
+
+.metric-card {
+    position: relative;
+    padding: var(--space-2xl);
+    background: var(--bg-card);
+    border: 2px solid var(--glass-border);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    transition: all 0.4s ease;
+    overflow: hidden;
+}
+
+.metric-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-primary);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+}
+
+.metric-card:hover::before {
+    transform: scaleX(1);
+}
+
+.metric-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--primary-blue);
+}
+
+.metric-value {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-weight: 800;
+    background: var(--gradient-primary);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+    margin-bottom: var(--space-sm);
+}
+
+.metric-label {
+    font-size: 0.875rem;
+    color: var(--text-tertiary);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.metric-description {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-top: var(--space-sm);
+    line-height: 1.5;
+}
+
+/* ============================================================================
+   SECTIONS PRINCIPALES - THÈME BLANC
+   ============================================================================ */
+
+.section {
+    padding: 8rem var(--space-xl);
+    position: relative;
+}
+
+.section-secondary {
+    background: var(--bg-secondary);
+}
+
+.section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(ellipse 60% 40% at 20% 70%, rgba(16, 185, 129, 0.02) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 80% 30%, rgba(139, 92, 246, 0.02) 0%, transparent 70%);
+    animation: sectionFlow 25s ease-in-out infinite;
+}
+
+@keyframes sectionFlow {
+    0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    50% { transform: scale(1.05) rotate(180deg); opacity: 0.8; }
+}
+
+.container {
+    max-width: 1600px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: var(--space-3xl);
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 800;
+    background: var(--gradient-primary);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: var(--space-lg);
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -var(--space-sm);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--gradient-primary);
+    border-radius: 2px;
+    animation: underlineGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes underlineGlow {
+    0% { width: 60px; opacity: 0.7; }
+    100% { width: 120px; opacity: 1; }
+}
+
+.section-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ============================================================================
+   GRILLES DE CARTES - THÈME BLANC
+   ============================================================================ */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: var(--space-2xl);
+    margin-top: var(--space-3xl);
+}
+
+.card {
+    position: relative;
+    padding: var(--space-2xl);
+    background: var(--bg-card);
+    border: 2px solid var(--glass-border);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    transition: all 0.5s ease;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-primary);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    border-radius: var(--radius-xl);
+}
+
+.card:hover::before {
+    opacity: 0.02;
+}
+
+.card:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--primary-blue);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-xl);
+}
+
+.card-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+    box-shadow: var(--shadow-colored);
+    transition: all 0.4s ease;
+}
+
+.card:hover .card-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.card-meta {
+    flex: 1;
+}
+
+.card-title {
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--space-sm);
+}
+
+.card-status {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm);
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--primary-emerald);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.card-description {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: var(--space-xl);
+    font-size: 1.125rem;
+}
+
+.card-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-xl);
+}
+
+.feature-tag {
+    padding: var(--space-sm);
+    background: var(--bg-secondary);
+    border: 1px solid var(--glass-border);
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-tertiary);
+    transition: all 0.3s ease;
+}
+
+.feature-tag:hover {
+    border-color: var(--primary-blue);
+    color: var(--primary-blue);
+    background: rgba(37, 99, 235, 0.05);
+}
+
+.card-actions {
+    display: flex;
+    gap: var(--space-md);
+    align-items: center;
+}
+
+.access-info {
+    margin-top: var(--space-lg);
+    padding: var(--space-lg);
+    background: rgba(16, 185, 129, 0.05);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    border-radius: var(--radius-lg);
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--primary-emerald);
+    font-weight: 500;
+}
+
+.command-block {
+    margin-top: var(--space-lg);
+    padding: var(--space-lg);
+    background: var(--text-primary);
+    border: 2px solid var(--accent-electric);
+    border-radius: var(--radius-lg);
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--accent-electric);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.command-block::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--accent-electric);
+    animation: commandScan 3s ease-in-out infinite;
+}
+
+@keyframes commandScan {
+    0%, 100% { transform: scaleX(0.1); opacity: 0.5; }
+    50% { transform: scaleX(1); opacity: 1; }
+}
+
+.command-block:hover {
+    background: rgba(14, 165, 233, 0.1);
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(14, 165, 233, 0.3);
+}
+
+/* ============================================================================
+   SYSTÈME D'ALBUMS - VERSION THÈME BLANC ULTRA-PREMIUM
+   ============================================================================ */
+
+/* Contrôles de filtrage ultra-premium pour thème blanc */
+.viz-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: var(--bg-card);
+    border-radius: 2rem;
+    border: 2px solid var(--glass-border);
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+}
+
+.viz-controls::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: var(--gradient-primary);
+    animation: shimmer 4s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.control-label {
+    font-weight: 700;
+    color: var(--text-primary);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: var(--font-heading);
+    background: var(--gradient-primary);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+}
+
+.control-label::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--gradient-primary);
+    border-radius: 1px;
+    opacity: 0.6;
+}
+
+.filter-btn {
+    padding: 0.8rem 1.8rem;
+    background: var(--bg-secondary);
+    border: 2px solid var(--glass-border);
+    color: var(--text-secondary);
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
+    font-family: var(--font-primary);
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.filter-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+.filter-btn:hover::before {
+    left: 100%;
+}
+
+.filter-btn:hover {
+    background: var(--bg-card);
+    border-color: var(--primary-blue);
+    color: var(--text-primary);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: var(--shadow-md);
+}
+
+.filter-btn.active {
+    background: var(--gradient-primary);
+    border-color: transparent;
+    color: white;
+    box-shadow: var(--shadow-colored);
+    transform: translateY(-2px);
+}
+
+.filter-btn.active:hover {
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-4px) scale(1.05);
+}
+
+/* Albums Grid Ultra-Premium pour thème blanc */
+.albums-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+    padding: 1rem;
+}
+
+/* Album Cards Ultra-Premium pour thème blanc */
+.album-card {
+    background: var(--bg-card);
+    border: 2px solid var(--glass-border);
+    border-radius: 2.5rem;
+    padding: 2rem;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+}
+
+.album-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-neural);
+    transform: scaleX(0);
+    transition: transform 0.6s ease;
+    border-radius: 2px;
+}
+
+.album-card::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: var(--gradient-neural);
+    border-radius: 2.7rem;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.album-card:hover::before {
+    transform: scaleX(1);
+}
+
+.album-card:hover::after {
+    opacity: 0.05;
+}
+
+.album-card:hover {
+    transform: translateY(-15px) scale(1.03);
+    border-color: rgba(37, 99, 235, 0.4);
+    box-shadow: var(--shadow-xl);
+}
+
+/* Album Header Ultra-Premium pour thème blanc */
+.album-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.album-icon {
+    font-size: 3rem;
+    background: var(--gradient-neural);
+    padding: 1.2rem;
+    border-radius: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: var(--shadow-colored);
+    position: relative;
+    transition: all 0.4s ease;
+}
+
+.album-icon::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    background: var(--gradient-neural);
+    border-radius: 2.3rem;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    filter: blur(8px);
+}
+
+.album-card:hover .album-icon::before {
+    opacity: 0.3;
+}
+
+.album-card:hover .album-icon {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: var(--shadow-glow);
+}
+
+.album-info {
+    flex: 1;
+    position: relative;
+}
+
+.album-title {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 0 0 0.5rem 0;
+    font-family: var(--font-heading);
+    line-height: 1.2;
+}
+
+.album-count {
+    color: var(--text-tertiary);
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    opacity: 0.8;
+}
+
+/* Album Preview Ultra-Premium pour thème blanc */
+.album-preview {
+    position: relative;
+    height: 220px;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, 
+        rgba(37, 99, 235, 0.05) 0%, 
+        rgba(139, 92, 246, 0.03) 50%, 
+        rgba(16, 185, 129, 0.02) 100%);
+    border: 2px solid var(--glass-border);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.album-preview::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 70%, 
+        rgba(37, 99, 235, 0.08) 0%, 
+        transparent 50%),
+    radial-gradient(circle at 70% 30%, 
+        rgba(139, 92, 246, 0.06) 0%, 
+        transparent 50%);
+    animation: previewAura 8s ease-in-out infinite;
+}
+
+@keyframes previewAura {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.05); }
+}
+
+.preview-image {
+    position: absolute;
+    width: 65%;
+    height: 65%;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 3px solid rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(5px);
+}
+
+.preview-image:nth-child(1) { 
+    top: 12%; 
+    left: 18%; 
+    transform: rotate(-8deg) scale(0.95);
+    z-index: 4;
+}
+
+.preview-image:nth-child(2) { 
+    top: 18%; 
+    left: 22%; 
+    transform: rotate(5deg) scale(0.9);
+    z-index: 3;
+}
+
+.preview-image:nth-child(3) { 
+    top: 24%; 
+    left: 26%; 
+    transform: rotate(-3deg) scale(0.85);
+    z-index: 2;
+}
+
+.preview-image:nth-child(4) { 
+    top: 30%; 
+    left: 30%; 
+    transform: rotate(6deg) scale(0.8);
+    z-index: 1;
+}
+
+.album-card:hover .preview-image {
+    transform: rotate(0deg) scale(1.05);
+    box-shadow: var(--shadow-xl);
+}
+
+.album-card:hover .preview-image:nth-child(1) {
+    transform: rotate(-3deg) scale(1.15);
+    z-index: 5;
+}
+
+.album-card:hover .preview-image:nth-child(2) {
+    transform: rotate(2deg) scale(1.1);
+}
+
+.preview-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.6s ease;
+    filter: brightness(0.95) contrast(1.05);
+}
+
+.preview-image:hover img {
+    transform: scale(1.1);
+    filter: brightness(1) contrast(1.15);
+}
+
+.preview-overlay {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background: var(--gradient-primary);
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    box-shadow: var(--shadow-colored);
+    z-index: 10;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Album Description Premium pour thème blanc */
+.album-description {
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.album-description p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 400;
+    opacity: 0.9;
+}
+
+/* Album Actions Premium pour thème blanc */
+.album-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.album-actions .btn {
+    flex: 1;
+    text-align: center;
+    font-weight: 700;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 1rem 2rem;
+    border-radius: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.9rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.album-actions .btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.album-actions .btn:hover::before {
+    left: 100%;
+}
+
+.album-actions .btn-primary {
+    background: var(--gradient-neural);
+    box-shadow: var(--shadow-colored);
+}
+
+.album-actions .btn-primary:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: var(--shadow-glow);
+}
+
+/* ============================================================================
+   VUE ALBUM INDIVIDUEL ULTRA-PREMIUM - THÈME BLANC
+   ============================================================================ */
+
+.album-single-header {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+    padding: 2.5rem;
+    background: var(--bg-card);
+    border-radius: 2.5rem;
+    border: 2px solid var(--glass-border);
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+.album-single-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-neural);
+    opacity: 0.8;
+}
+
+.album-title-section {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex: 1;
+}
+
+.album-icon-large {
+    font-size: 4.5rem;
+    background: var(--gradient-neural);
+    padding: 2rem;
+    border-radius: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: var(--shadow-colored);
+    position: relative;
+    transition: all 0.4s ease;
+}
+
+.album-icon-large::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    background: var(--gradient-neural);
+    border-radius: 2.9rem;
+    z-index: -1;
+    opacity: 0.2;
+    filter: blur(12px);
+    animation: iconGlow 3s ease-in-out infinite;
+}
+
+@keyframes iconGlow {
+    0%, 100% { opacity: 0.2; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(1.05); }
+}
+
+.album-title-section h2 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--text-primary);
+    margin: 0 0 0.5rem 0;
+    font-family: var(--font-heading);
+    background: var(--gradient-neural);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.album-title-section p {
+    color: var(--text-secondary);
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+/* Visualizations Grid Premium pour thème blanc */
+.visualizations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+/* Visualization Cards Ultra-Premium pour thème blanc */
+.viz-card {
+    background: var(--bg-card);
+    border: 2px solid var(--glass-border);
+    border-radius: 2rem;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow-lg);
+    position: relative;
+}
+
+.viz-card::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: var(--gradient-primary);
+    border-radius: 2.2rem;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.viz-card:hover::before {
+    opacity: 0.05;
+}
+
+.viz-card:hover {
+    transform: translateY(-12px) scale(1.02);
+    border-color: rgba(37, 99, 235, 0.4);
+    box-shadow: var(--shadow-xl);
+}
+
+/* Visualization Image Container Premium pour thème blanc */
+.viz-image-container {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.viz-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.6s ease;
+    filter: brightness(0.95) contrast(1.05);
+}
+
+.viz-image-container:hover img {
+    transform: scale(1.15);
+    filter: brightness(1.05) contrast(1.15);
+}
+
+.viz-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(37, 99, 235, 0.9) 0%, 
+        rgba(139, 92, 246, 0.9) 50%,
+        rgba(16, 185, 129, 0.9) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.4s ease;
+    backdrop-filter: blur(8px);
+}
+
+.viz-image-container:hover .viz-overlay {
+    opacity: 1;
+}
+
+.viz-overlay-content {
+    text-align: center;
+    color: white;
+    font-weight: 700;
+    transform: scale(0.7);
+    transition: transform 0.4s ease;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.viz-image-container:hover .viz-overlay-content {
+    transform: scale(1);
+}
+
+/* Visualization Info Premium pour thème blanc */
+.viz-info {
+    padding: 1.8rem;
+}
+
+.viz-info h4 {
+    color: var(--text-primary);
+    margin: 0 0 0.8rem 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    font-family: var(--font-heading);
+    line-height: 1.3;
+}
+
+.viz-info p {
+    color: var(--text-secondary);
+    margin: 0 0 1.5rem 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+.viz-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+    margin-bottom: 1.5rem;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.viz-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-sm {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.85rem;
+    flex: 1;
+    font-weight: 700;
+    border-radius: 1.2rem;
+    transition: all 0.4s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-sm::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-sm:hover::before {
+    left: 100%;
+}
+
+.btn-sm:hover {
+    transform: translateY(-3px) scale(1.02);
+}
+
+/* ============================================================================
+   LOADING ET ÉTATS - THÈME BLANC
+   ============================================================================ */
+
+.viz-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: var(--space-2xl);
+    margin-bottom: var(--space-3xl);
+}
+
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem;
+    background: var(--bg-card);
+    border-radius: var(--radius-xl);
+    border: 2px solid var(--glass-border);
+    text-align: center;
+    box-shadow: var(--shadow-md);
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--glass-border);
+    border-top: 4px solid var(--primary-blue);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ============================================================================
+   FOOTER - THÈME BLANC
+   ============================================================================ */
+
+.footer {
+    padding: var(--space-3xl) var(--space-xl);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-top: 2px solid var(--glass-border);
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gradient-neural);
+    animation: footerGlow 3s ease-in-out infinite;
+}
+
+@keyframes footerGlow {
+    0%, 100% { opacity: 0.5; transform: scaleX(0.5); }
+    50% { opacity: 1; transform: scaleX(1); }
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-text {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    opacity: 0.8;
+    letter-spacing: 0.5px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-xl);
+    margin-top: var(--space-xl);
+    flex-wrap: wrap;
+}
+
+.footer-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.footer-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-electric);
+    transition: width 0.3s ease;
+}
+
+.footer-link:hover::after {
+    width: 100%;
+}
+
+.footer-link:hover {
+    color: var(--accent-electric);
+}
+
+/* ============================================================================
+   ANIMATIONS ET EFFETS - THÈME BLANC
+   ============================================================================ */
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.slide-in {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: all 0.6s ease;
+}
+
+.slide-in.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Effet de pulsation pour les statuts */
+@keyframes pulse-glow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(16, 185, 129, 0.6);
+    }
+}
+
+/* ============================================================================
+   NOTIFICATIONS - THÈME BLANC
+   ============================================================================ */
+
+.notification-container {
+    position: fixed;
+    top: 100px;
+    right: var(--space-xl);
+    z-index: 10000;
+    pointer-events: none;
+}
+
+.notification {
+    background: var(--bg-card);
+    border: 2px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg) var(--space-xl);
+    margin-bottom: var(--space-md);
+    box-shadow: var(--shadow-xl);
+    transform: translateX(400px);
+    transition: all 0.4s ease;
+    pointer-events: auto;
+    max-width: 320px;
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+
+.notification.success {
+    border-left: 4px solid var(--primary-emerald);
+    color: var(--primary-emerald);
+}
+
+.notification.error {
+    border-left: 4px solid #EF4444;
+    color: #EF4444;
+}
+
+.notification.info {
+    border-left: 4px solid var(--primary-blue);
+    color: var(--primary-blue);
+}
+
+/* ============================================================================
+   MODALS POUR IMAGES - THÈME BLANC
+   ============================================================================ */
+
+.image-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.image-modal img {
+    max-width: 95vw;
+    max-height: 95vh;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-2xl);
+    animation: modalImageZoom 0.4s ease;
+}
+
+@keyframes modalImageZoom {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* ============================================================================
+   RESPONSIVE DESIGN PREMIUM - THÈME BLANC
+   ============================================================================ */
+
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    }
+    
+    .albums-grid {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+    }
+    
+    .visualizations-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .viz-controls {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn {
+        text-align: center;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav {
+        padding: var(--space-md) var(--space-lg);
+    }
+
+    .hero {
+        padding: 8rem var(--space-lg) 6rem;
+    }
+
+    .section {
+        padding: 6rem var(--space-lg);
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .albums-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0.5rem;
+    }
+    
+    .album-card {
+        padding: 1.5rem;
+        border-radius: 2rem;
+    }
+    
+    .album-preview {
+        height: 180px;
+    }
+    
+    .visualizations-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .card {
+        padding: var(--space-xl);
+    }
+
+    .card-header {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--space-lg);
+    }
+
+    .album-single-header {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+        padding: 2rem;
+    }
+    
+    .album-title-section {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .album-icon-large {
+        font-size: 3.5rem;
+        padding: 1.5rem;
+    }
+    
+    .album-title-section h2 {
+        font-size: 2rem;
+    }
+
+    .metrics {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: var(--space-md);
+    }
+    
+    .viz-controls {
+        padding: 1.5rem;
+        gap: 1rem;
+    }
+    
+    .control-group {
+        justify-content: center;
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .brand-name {
+        font-size: 1.5rem;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .metrics {
+        grid-template-columns: 1fr;
+    }
+    
+    .album-preview {
+        height: 150px;
+    }
+    
+    .viz-image-container {
+        height: 180px;
+    }
+    
+    .filter-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.8rem;
+    }
+    
+    .album-icon {
+        font-size: 2.5rem;
+        padding: 1rem;
+    }
+    
+    .album-title {
+        font-size: 1.2rem;
+    }
+}
+
+/* ============================================================================
+   SCROLLBAR PERSONNALISÉE - THÈME BLANC
+   ============================================================================ */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-sm);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gradient-primary);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-blue);
+    box-shadow: var(--shadow-md);
+}
+
+/* ============================================================================
+   OPTIMISATIONS PERFORMANCES
+   ============================================================================ */
+
+.will-change-transform {
+    will-change: transform;
+}
+
+.will-change-opacity {
+    will-change: opacity;
+}
+
+.gpu-acceleration {
+    transform: translateZ(0);
+}
+
+/* ============================================================================
+   AMÉLIORATIONS VISUELLES FINALES - THÈME BLANC
+   ============================================================================ */
+
+/* Effet de lueur pour les éléments interactifs */
+.interactive-glow:hover {
+    filter: drop-shadow(0 0 20px rgba(37, 99, 235, 0.2));
+}
+
+/* Animation de chargement améliorée */
+.loading-pulse {
+    animation: loadingPulse 2s ease-in-out infinite;
+}
+
+@keyframes loadingPulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+/* Transition fluide pour les états */
+.smooth-transition {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================================
+   ÉTATS SPÉCIAUX ET MICRO-INTERACTIONS - THÈME BLANC
+   ============================================================================ */
+
+/* Effet de focus amélioré */
+*:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+    border-radius: var(--radius-md);
+}
+
+/* Sélection de texte personnalisée */
+::selection {
+    background: rgba(37, 99, 235, 0.15);
+    color: var(--text-primary);
+}
+
+::-moz-selection {
+    background: rgba(37, 99, 235, 0.15);
+    color: var(--text-primary);
+}
+
+/* Effet de ripple pour les boutons */
+.btn-ripple {
+    position: relative;
+    overflow: hidden;
+    transform: translate3d(0, 0, 0);
+}
+
+.btn-ripple:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, #000 10%, transparent 10.01%);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    transform: scale(10, 10);
+    opacity: 0;
+    transition: transform .5s, opacity 1s;
+}
+
+.btn-ripple:active:after {
+    transform: scale(0, 0);
+    opacity: .1;
+    transition: 0s;
+}
+
+/* ============================================================================
+   AMÉLIORATIONS ACCESSIBILITÉ - THÈME BLANC
+   ============================================================================ */
+
+/* Respect des préférences de mouvement réduit */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Support pour les écrans haute densité */
+@media only screen and (-webkit-min-device-pixel-ratio: 2),
+       only screen and (min--moz-device-pixel-ratio: 2),
+       only screen and (-o-min-device-pixel-ratio: 2/1),
+       only screen and (min-device-pixel-ratio: 2),
+       only screen and (min-resolution: 192dpi),
+       only screen and (min-resolution: 2dppx) {
+    
+    .album-icon,
+    .album-icon-large {
+        background-size: contain;
+        image-rendering: -webkit-optimize-contrast;
+    }
+}
+
+/* ============================================================================
+   PRINT STYLES - THÈME BLANC
+   ============================================================================ */
+
+@media print {
+    * {
+        background: transparent !important;
+        color: black !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+    
+    .nav,
+    .footer,
+    .btn,
+    .notification-container {
+        display: none !important;
+    }
+    
+    .section {
+        page-break-inside: avoid;
+    }
+    
+    body {
+        background: white !important;
+    }
+}
+
+/* ============================================================================
+   UTILS ET CLASSES HELPER - THÈME BLANC
+   ============================================================================ */
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.text-gradient {
+    background: var(--gradient-primary);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-neural {
+    background: var(--gradient-neural);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.shadow-glow {
+    box-shadow: var(--shadow-glow);
+}
+
+.glass-effect {
+    background: var(--glass-primary);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--glass-border);
+}
+
+.pulse-animation {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: .8;
+    }
+}
+
+/* Classes pour animations personnalisées */
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+.animate-slide-up {
+    animation: slideUp 0.8s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-scale-in {
+    animation: scaleIn 0.5s ease-out;
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ============================================================================
+   ÉTATS CUSTOM POUR LES COMPOSANTS - THÈME BLANC
+   ============================================================================ */
+
+.album-card.featured {
+    background: linear-gradient(135deg, 
+        rgba(37, 99, 235, 0.03) 0%, 
+        rgba(139, 92, 246, 0.02) 50%, 
+        rgba(16, 185, 129, 0.01) 100%);
+    border: 2px solid rgba(37, 99, 235, 0.3);
+}
+
+.album-card.featured::before {
+    background: var(--gradient-neural);
+    transform: scaleX(1);
+}
+
+.viz-card.highlighted {
+    border: 2px solid var(--accent-electric);
+    box-shadow: 0 0 30px rgba(14, 165, 233, 0.2);
+}
+
+.filter-btn.loading {
+    position: relative;
+    pointer-events: none;
+}
+
+.filter-btn.loading::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    margin: auto;
+    border: 2px solid transparent;
+    border-top-color: currentColor;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* Styles pour les toasts de notification avancés - thème blanc */
+.toast {
+    transform: translateX(100%);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.toast.show {
+    transform: translateX(0);
+}
+
+.toast.success {
+    background: linear-gradient(135deg, 
+        rgba(16, 185, 129, 0.08) 0%, 
+        rgba(16, 185, 129, 0.03) 100%);
+    border-left: 4px solid var(--primary-emerald);
+}
+
+.toast.warning {
+    background: linear-gradient(135deg, 
+        rgba(245, 158, 11, 0.08) 0%, 
+        rgba(245, 158, 11, 0.03) 100%);
+    border-left: 4px solid #F59E0B;
+}
+
+.toast.error {
+    background: linear-gradient(135deg, 
+        rgba(239, 68, 68, 0.08) 0%, 
+        rgba(239, 68, 68, 0.03) 100%);
+    border-left: 4px solid #EF4444;
+}
+
+/* ============================================================================
+   AMÉLIORATIONS FINALES - THÈME BLANC
+   ============================================================================ */
+
+/* Effet de parallax subtil pour les sections */
+.parallax-bg {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Animation de typing pour les titres */
+.typing-animation {
+    overflow: hidden;
+    border-right: 2px solid var(--primary-blue);
+    white-space: nowrap;
+    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: var(--primary-blue); }
+}
+
+/* Effet de perspective 3D pour les cartes */
+.card-3d {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+
+.card-3d:hover {
+    transform: rotateX(5deg) rotateY(5deg) scale(1.02);
+}
+
+/* Gradient animé pour les bordures */
+.animated-border {
+    position: relative;
+    background: var(--bg-card);
+    border-radius: var(--radius-xl);
+}
+
+.animated-border::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    padding: 2px;
+    background: linear-gradient(45deg, 
+        var(--primary-blue), 
+        var(--primary-purple), 
+        var(--primary-emerald), 
+        var(--accent-electric));
+    border-radius: inherit;
+    background-size: 300% 300%;
+    animation: gradientShift 3s ease infinite;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: xor;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* ============================================================================
+   THÈME CLAIR SPÉCIFIQUE - VARIABLES ADDITIONNELLES
+   ============================================================================ */
+
+:root {
+    /* Couleurs spécifiques au thème clair */
+    --border-light: #E2E8F0;
+    --border-medium: #CBD5E1;
+    --hover-bg: rgba(37, 99, 235, 0.04);
+    --active-bg: rgba(37, 99, 235, 0.08);
+    
+    /* États des boutons pour thème clair */
+    --btn-hover-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+    --btn-active-shadow: 0 2px 8px rgba(15, 23, 42, 0.2);
+    
+    /* Overlays spécifiques */
+    --overlay-light: rgba(255, 255, 255, 0.9);
+    --overlay-medium: rgba(255, 255, 255, 0.7);
+    
+    /* Couleurs de statut adaptées */
+    --success-bg: rgba(16, 185, 129, 0.1);
+    --warning-bg: rgba(245, 158, 11, 0.1);
+    --error-bg: rgba(239, 68, 68, 0.1);
+    --info-bg: rgba(37, 99, 235, 0.1);
+}
+
+/* ============================================================================
+   INTERACTIONS PREMIUM POUR THÈME BLANC
+   ============================================================================ */
+
+/* Effet de survol pour les liens */
+.premium-link {
+    position: relative;
+    color: var(--primary-blue);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.premium-link::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background: var(--gradient-primary);
+    transition: width 0.3s ease;
+}
+
+.premium-link:hover::before {
+    width: 100%;
+}
+
+.premium-link:hover {
+    color: var(--primary-purple);
+}
+
+/* Boutons avec effet de vague */
+.wave-btn {
+    position: relative;
+    overflow: hidden;
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: var(--radius-xl);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.wave-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.wave-btn:active::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Cards avec effet de lift premium */
+.lift-card {
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    transform-origin: center;
+}
+
+.lift-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 
+        0 20px 40px rgba(15, 23, 42, 0.1),
+        0 8px 16px rgba(15, 23, 42, 0.06);
+}
+
+/* Effet de brillance pour les éléments premium */
+.shine-effect {
+    position: relative;
+    overflow: hidden;
+}
+
+.shine-effect::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.3) 50%,
+        transparent 70%
+    );
+    transform: rotate(45deg);
+    animation: shine 3s ease-in-out infinite;
+}
+
+@keyframes shine {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    50% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    100% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+}
+
+/* ============================================================================
+   MICRO-ANIMATIONS POUR AMÉLIORER L'UX
+   ============================================================================ */
+
+/* Animation de chargement des cartes */
+@keyframes cardLoadIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.card-load-animation {
+    animation: cardLoadIn 0.6s ease-out forwards;
+}
+
+/* Délais échelonnés pour les animations de grille */
+.card-load-animation:nth-child(1) { animation-delay: 0.1s; }
+.card-load-animation:nth-child(2) { animation-delay: 0.2s; }
+.card-load-animation:nth-child(3) { animation-delay: 0.3s; }
+.card-load-animation:nth-child(4) { animation-delay: 0.4s; }
+.card-load-animation:nth-child(5) { animation-delay: 0.5s; }
+.card-load-animation:nth-child(6) { animation-delay: 0.6s; }
+
+/* Animation subtile pour les icônes */
+.icon-breathe {
+    animation: breathe 4s ease-in-out infinite;
+}
+
+@keyframes breathe {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* Animation de rotation continue pour les spinners */
+.rotate-continuous {
+    animation: rotateContinuous 2s linear infinite;
+}
+
+@keyframes rotateContinuous {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* ============================================================================
+   OPTIMISATIONS SPÉCIFIQUES AU THÈME BLANC
+   ============================================================================ */
+
+/* Amélioration du contraste pour les textes sur fond blanc */
+.high-contrast-text {
+    color: var(--text-primary);
+    text-shadow: 0 1px 2px rgba(15, 23, 42, 0.1);
+}
+
+/* Bordures subtiles pour les éléments blancs */
+.subtle-border {
+    border: 1px solid var(--border-light);
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+/* États de focus améliorés pour l'accessibilité */
+.focus-ring:focus {
+    outline: none;
+    box-shadow: 
+        0 0 0 2px var(--bg-primary),
+        0 0 0 4px var(--primary-blue);
+}
+
+/* Mode sombre optionnel via classe */
+.dark-mode {
+    --bg-primary: #0F172A;
+    --bg-secondary: #1E293B;
+    --text-primary: #F8FAFC;
+    --text-secondary: #CBD5E1;
+    --glass-primary: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.12);
+}
+
+/* Fin de la transformation thème blanc premium */

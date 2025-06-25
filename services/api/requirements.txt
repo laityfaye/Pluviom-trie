@@ -1,9 +1,12 @@
 # services/api/requirements.txt
-# API FastAPI pour prédictions climatiques
+# API FastAPI pour prédictions climatiques - VERSION CORRIGÉE
 
 # Framework web
 fastapi==0.104.1
 uvicorn[standard]==0.24.0
+
+# Validation email (REQUIS pour FastAPI/Pydantic)
+email-validator>=2.0.0
 
 # Base de données
 asyncpg==0.29.0
@@ -20,24 +23,26 @@ pydantic-settings==2.1.0
 numpy==1.24.4
 pandas==2.0.3
 
-# Monitoring et logging
-prometheus-client==0.19.0
-structlog==23.2.0
+# Traitement d'images et fichiers
+Pillow==10.1.0
+pathlib2==2.3.7
 
-# Outils HTTP
+# HTTP et fichiers
 httpx==0.25.2
 aiofiles==23.2.1
 
-# Sécurité
-python-jose[cryptography]==3.3.0
-passlib[bcrypt]==1.7.4
+# Monitoring et logging
+structlog==23.2.0
+
+# Sécurité (optionnel pour version de base)
+# python-jose[cryptography]==3.3.0
+# passlib[bcrypt]==1.7.4
 python-multipart==0.0.6
 
 # Configuration
 python-dotenv==1.0.0
 
-# Développement et tests
-pytest==7.4.3
-pytest-asyncio==0.21.1
-pytest-cov==4.1.0
-httpx==0.25.2
+# Développement et tests (optionnel)
+# pytest==7.4.3
+# pytest-asyncio==0.21.1
+# pytest-cov==4.1.0
