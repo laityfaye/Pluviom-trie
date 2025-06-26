@@ -1,7 +1,7 @@
 RAPPORT SPATIAL - TOP 10 ÉVÉNEMENTS PAR COUVERTURE SPATIALE
 ================================================================================
 
-Date de génération: 2025-06-25 17:11:20
+Date de génération: 2025-06-26 23:22:22
 Type d'analyse: top10_coverage_events
 Nombre d'événements: 10
 Période: 1981-2023

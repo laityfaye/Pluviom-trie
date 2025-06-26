@@ -4,60 +4,60 @@
     "feature_scaler.pkl": {
       "path": "C:\\Users\\laity\\Desktop\\M\u00e9moire Master\\M\u00e9moire\\Traitement\\services\\api\\models\\feature_scaler.pkl",
       "size_mb": 0.0025320053100585938,
-      "deployed_at": "2025-06-25 17:14:56.044348",
+      "deployed_at": "2025-06-26 23:35:29.908725",
       "status": "active"
     },
     "neural_network_classifier.pkl": {
       "path": "C:\\Users\\laity\\Desktop\\M\u00e9moire Master\\M\u00e9moire\\Traitement\\services\\api\\models\\neural_network_classifier.pkl",
       "size_mb": 0.14691925048828125,
-      "deployed_at": "2025-06-25 17:14:56.529456",
+      "deployed_at": "2025-06-26 23:35:30.499542",
       "status": "active"
     },
     "neural_network_reg_regressor.pkl": {
       "path": "C:\\Users\\laity\\Desktop\\M\u00e9moire Master\\M\u00e9moire\\Traitement\\services\\api\\models\\neural_network_reg_regressor.pkl",
       "size_mb": 0.0918874740600586,
-      "deployed_at": "2025-06-25 17:14:56.906184",
+      "deployed_at": "2025-06-26 23:35:30.951219",
       "status": "active"
     },
     "randomforest_classifier.pkl": {
       "path": "C:\\Users\\laity\\Desktop\\M\u00e9moire Master\\M\u00e9moire\\Traitement\\services\\api\\models\\randomforest_classifier.pkl",
       "size_mb": 0.16516971588134766,
-      "deployed_at": "2025-06-25 17:14:57.690276",
+      "deployed_at": "2025-06-26 23:35:31.793306",
       "status": "active"
     },
     "randomforest_reg_regressor.pkl": {
       "path": "C:\\Users\\laity\\Desktop\\M\u00e9moire Master\\M\u00e9moire\\Traitement\\services\\api\\models\\randomforest_reg_regressor.pkl",
       "size_mb": 2.921219825744629,
-      "deployed_at": "2025-06-25 17:14:58.182627",
+      "deployed_at": "2025-06-26 23:35:32.421197",
       "status": "active"
     },
     "svm_classifier.pkl": {
       "path": "C:\\Users\\laity\\Desktop\\M\u00e9moire Master\\M\u00e9moire\\Traitement\\services\\api\\models\\svm_classifier.pkl",
       "size_mb": 0.05208873748779297,
-      "deployed_at": "2025-06-25 17:14:58.468393",
+      "deployed_at": "2025-06-26 23:35:32.857266",
       "status": "active"
     },
     "svr_regressor.pkl": {
       "path": "C:\\Users\\laity\\Desktop\\M\u00e9moire Master\\M\u00e9moire\\Traitement\\services\\api\\models\\svr_regressor.pkl",
       "size_mb": 0.07533645629882812,
-      "deployed_at": "2025-06-25 17:14:58.893199",
+      "deployed_at": "2025-06-26 23:35:33.326614",
       "status": "active"
     },
     "xgboost_classifier.pkl": {
       "path": "C:\\Users\\laity\\Desktop\\M\u00e9moire Master\\M\u00e9moire\\Traitement\\services\\api\\models\\xgboost_classifier.pkl",
       "size_mb": 0.054772377014160156,
-      "deployed_at": "2025-06-25 17:14:59.305334",
+      "deployed_at": "2025-06-26 23:35:33.841040",
       "status": "active"
     },
     "xgboost_reg_regressor.pkl": {
       "path": "C:\\Users\\laity\\Desktop\\M\u00e9moire Master\\M\u00e9moire\\Traitement\\services\\api\\models\\xgboost_reg_regressor.pkl",
       "size_mb": 0.4331350326538086,
-      "deployed_at": "2025-06-25 17:14:59.663818",
+      "deployed_at": "2025-06-26 23:35:34.336043",
       "status": "active"
     }
   },
   "api_version": "1.0.0",
-  "deployment_date": "2025-06-25T17:14:59.664702",
+  "deployment_date": "2025-06-26T23:35:34.337904",
   "database_connection": "docker-compose exec timescaledb",
   "endpoints": {
     "predict_occurrence": {

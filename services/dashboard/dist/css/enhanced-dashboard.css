@@ -1,0 +1,507 @@
+/* services/dashboard/dist/css/enhanced-dashboard.css */
+/* Styles supplémentaires pour modals, notifications et interactions avancées */
+
+/* ============================================================================
+   NOTIFICATIONS SYSTÈME
+   ============================================================================ */
+
+.notification-container {
+    position: fixed;
+    top: var(--space-xl);
+    right: var(--space-xl);
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    pointer-events: none;
+}
+
+.notification {
+    background: var(--bg-card);
+    border: 2px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md) var(--space-lg);
+    box-shadow: var(--shadow-xl);
+    backdrop-filter: blur(12px);
+    max-width: 400px;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: auto;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.notification.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.notification.success {
+    border-color: var(--primary-emerald);
+    background: linear-gradient(135deg, 
+        rgba(16, 185, 129, 0.1) 0%, 
+        rgba(16, 185, 129, 0.05) 100%);
+    color: var(--primary-emerald);
+}
+
+.notification.error {
+    border-color: #EF4444;
+    background: linear-gradient(135deg, 
+        rgba(239, 68, 68, 0.1) 0%, 
+        rgba(239, 68, 68, 0.05) 100%);
+    color: #EF4444;
+}
+
+.notification.info {
+    border-color: var(--primary-blue);
+    background: linear-gradient(135deg, 
+        rgba(37, 99, 235, 0.1) 0%, 
+        rgba(37, 99, 235, 0.05) 100%);
+    color: var(--primary-blue);
+}
+
+/* ============================================================================
+   MODALS AVANCÉS
+   ============================================================================ */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(8px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.3s ease;
+    padding: var(--space-xl);
+}
+
+.modal-overlay.show {
+    opacity: 1;
+}
+
+.modal-content {
+    background: var(--bg-card);
+    border: 2px solid var(--glass-border);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-2xl);
+    max-width: 600px;
+    width: 100%;
+    max-height: 80vh;
+    overflow: hidden;
+    transform: scale(0.9) translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.modal-overlay.show .modal-content {
+    transform: scale(1) translateY(0);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-lg) var(--space-xl);
+    background: linear-gradient(135deg, var(--bg-accent) 0%, var(--bg-secondary) 100%);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.modal-header h3 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-tertiary);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-close:hover {
+    background: var(--glass-hover);
+    color: var(--text-primary);
+    transform: scale(1.1);
+}
+
+.modal-body {
+    padding: var(--space-xl);
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+/* ============================================================================
+   STEP MODAL SPÉCIFIQUE
+   ============================================================================ */
+
+.step-modal {
+    min-width: 400px;
+}
+
+.step-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.step-modal-header h3 {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.step-status {
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.step-status.completed {
+    background: linear-gradient(135deg, var(--primary-emerald) 0%, #059669 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.step-modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.step-metric {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-sm) var(--space-md);
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--glass-border);
+}
+
+.step-metric .metric-label {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.step-metric .metric-value {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+}
+
+.step-description {
+    background: var(--bg-accent);
+    padding: var(--space-md);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--primary-blue);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+/* ============================================================================
+   EFFETS D'INTERACTION AVANCÉS
+   ============================================================================ */
+
+.highlighted {
+    animation: highlightPulse 1s ease-in-out;
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.4) !important;
+}
+
+@keyframes highlightPulse {
+    0%, 100% { 
+        transform: scale(1); 
+        box-shadow: 0 0 0 rgba(37, 99, 235, 0.4);
+    }
+    50% { 
+        transform: scale(1.02); 
+        box-shadow: 0 0 30px rgba(37, 99, 235, 0.6);
+    }
+}
+
+/* Animation de données en temps réel améliorée */
+.real-data-indicator::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.2) 0%, transparent 70%);
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: inherit;
+    pointer-events: none;
+    animation: dataRipple 2s infinite;
+}
+
+@keyframes dataRipple {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* ============================================================================
+   BOUTONS INTERACTIFS AVANCÉS
+   ============================================================================ */
+
+#loadRealData {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--primary-emerald) 0%, #059669 100%);
+    color: white;
+    border: none;
+}
+
+#loadRealData::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.5s ease;
+}
+
+#loadRealData:hover::before {
+    left: 100%;
+}
+
+#loadRealData:hover {
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+    transform: translateY(-2px);
+}
+
+/* ============================================================================
+   BARRES DE PROGRESSION ANIMÉES
+   ============================================================================ */
+
+.progress-fill::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 30px;
+    background: linear-gradient(90deg, 
+        rgba(255, 255, 255, 0) 0%, 
+        rgba(255, 255, 255, 0.3) 50%, 
+        rgba(255, 255, 255, 0) 100%);
+    animation: progressGlow 2s infinite linear;
+    transform: translateX(-30px);
+}
+
+@keyframes progressGlow {
+    0% { transform: translateX(-30px); }
+    100% { transform: translateX(calc(var(--progress-width, 100%) + 30px)); }
+}
+
+/* ============================================================================
+   CURSEURS ET INTERACTIONS
+   ============================================================================ */
+
+.step-item,
+.result-card,
+.event-item {
+    cursor: pointer;
+    user-select: none;
+}
+
+.step-item:active {
+    transform: translateX(2px) scale(0.98);
+}
+
+.result-card:active {
+    transform: translateY(-4px) scale(0.98);
+}
+
+/* ============================================================================
+   SCROLLBAR PERSONNALISÉE POUR MODALS
+   ============================================================================ */
+
+.modal-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+    border-radius: 3px;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+    background: var(--gradient-primary);
+    border-radius: 3px;
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-blue);
+}
+
+/* ============================================================================
+   RESPONSIVE DESIGN POUR NOUVELLES FONCTIONNALITÉS
+   ============================================================================ */
+
+@media (max-width: 768px) {
+    .notification-container {
+        top: var(--space-md);
+        right: var(--space-md);
+        left: var(--space-md);
+    }
+    
+    .notification {
+        max-width: none;
+    }
+    
+    .modal-overlay {
+        padding: var(--space-md);
+    }
+    
+    .modal-content {
+        max-height: 90vh;
+    }
+    
+    .step-modal {
+        min-width: auto;
+    }
+    
+    .step-metric {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-header {
+        padding: var(--space-md);
+    }
+    
+    .modal-body {
+        padding: var(--space-md);
+    }
+    
+    .step-modal-header {
+        flex-direction: column;
+        gap: var(--space-sm);
+        text-align: center;
+    }
+}
+
+/* ============================================================================
+   ANIMATIONS D'ENTRÉE POUR NOUVELLES SECTIONS
+   ============================================================================ */
+
+.pipeline-overview,
+.results-grid {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideInUp 0.8s ease-out forwards;
+}
+
+.pipeline-overview {
+    animation-delay: 0.2s;
+}
+
+.results-grid {
+    animation-delay: 0.4s;
+}
+
+@keyframes slideInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Stagger animation pour les cartes de résultats */
+.result-card {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideInUp 0.6s ease-out forwards;
+}
+
+.result-card:nth-child(1) { animation-delay: 0.1s; }
+.result-card:nth-child(2) { animation-delay: 0.2s; }
+.result-card:nth-child(3) { animation-delay: 0.3s; }
+.result-card:nth-child(4) { animation-delay: 0.4s; }
+
+/* ============================================================================
+   DARK MODE SUPPORT (PRÉPARATION)
+   ============================================================================ */
+
+@media (prefers-color-scheme: dark) {
+    .modal-overlay {
+        background: rgba(0, 0, 0, 0.8);
+    }
+    
+    .notification {
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .step-description {
+        background: rgba(15, 23, 42, 0.5);
+    }
+}
+
+/* ============================================================================
+   ÉTATS DE CHARGEMENT AMÉLIORÉS
+   ============================================================================ */
+
+.loading-shimmer {
+    background: linear-gradient(90deg, 
+        var(--bg-secondary) 25%, 
+        var(--bg-tertiary) 50%, 
+        var(--bg-secondary) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+.loading-dots::after {
+    content: '';
+    animation: loadingDots 1.5s infinite;
+}
+
+@keyframes loadingDots {
+    0%, 20% { content: ''; }
+    40% { content: '.'; }
+    60% { content: '..'; }
+    80%, 100% { content: '...'; }
+}

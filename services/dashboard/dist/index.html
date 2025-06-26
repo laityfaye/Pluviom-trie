@@ -1,4 +1,4 @@
-<!-- services/dashboard/dist/index.html -->
+<!-- services/dashboard/dist/index.html - VERSION AMÉLIORÉE AVEC DONNÉES RÉELLES -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ClimaSen • Climate Intelligence Platform</title>
     <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/data-sections.css">
 </head>
 <body>
     <!-- Container de notifications -->
@@ -54,33 +55,264 @@
                 </a>
             </div>
             
-            <!-- Métriques -->
+            <!-- Métriques RÉELLES du Pipeline -->
             <div class="metrics">
-                <div class="metric-card fade-in">
-                    <div class="metric-value">99.9%</div>
-                    <div class="metric-label">Précision IA</div>
-                    <div class="metric-description">Prédictions ultra-précises</div>
+                <div class="metric-card fade-in" data-real-metric="events-detected">
+                    <div class="metric-value" id="metric-events">1439</div>
+                    <div class="metric-label">Événements Détectés</div>
+                    <div class="metric-description">Précipitations extrêmes (1981-2023)</div>
                 </div>
-                <div class="metric-card fade-in">
-                    <div class="metric-value">&lt; 0.5ms</div>
-                    <div class="metric-label">Latence Quantique</div>
-                    <div class="metric-description">Réponse en temps réel</div>
+                <div class="metric-card fade-in" data-real-metric="pipeline-duration">
+                    <div class="metric-value" id="metric-duration">856s</div>
+                    <div class="metric-label">Pipeline Complet</div>
+                    <div class="metric-description">Recherche → Production</div>
                 </div>
-                <div class="metric-card fade-in">
-                    <div class="metric-value">∞</div>
-                    <div class="metric-label">Puissance Neurale</div>
-                    <div class="metric-description">Capacité illimitée</div>
+                <div class="metric-card fade-in" data-real-metric="models-deployed">
+                    <div class="metric-value" id="metric-models">9</div>
+                    <div class="metric-label">Modèles ML</div>
+                    <div class="metric-description">Déployés en production</div>
                 </div>
-                <div class="metric-card fade-in">
-                    <div class="metric-value">24/7</div>
-                    <div class="metric-label">Surveillance Active</div>
-                    <div class="metric-description">Monitoring continu</div>
+                <div class="metric-card fade-in" data-real-metric="coverage-area">
+                    <div class="metric-value" id="metric-coverage">43</div>
+                    <div class="metric-label">Années Analysées</div>
+                    <div class="metric-description">Données CHIRPS complètes</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section Services -->
+    <!-- Section Pipeline Status - NOUVEAU -->
+    <section class="section" id="pipeline-status">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title fade-in">Pipeline Status</h2>
+                <p class="section-subtitle fade-in">
+                    État en temps réel du pipeline de recherche et production
+                </p>
+            </div>
+
+            <div class="pipeline-overview">
+                <!-- Phase 1: Recherche -->
+                <div class="pipeline-phase" data-phase="research">
+                    <div class="phase-header">
+                        <h3>🔬 Phase 1: Recherche & Développement</h3>
+                        <div class="phase-status completed">Terminée</div>
+                    </div>
+                    <div class="phase-steps">
+                        <div class="step-item completed" data-step="detection">
+                            <div class="step-icon">✅</div>
+                            <div class="step-info">
+                                <h4>Détection Événements</h4>
+                                <p>1439 événements détectés • 95.3s</p>
+                            </div>
+                        </div>
+                        <div class="step-item completed" data-step="spatial-top10">
+                            <div class="step-icon">✅</div>
+                            <div class="step-info">
+                                <h4>Analyse Spatiale TOP 10</h4>
+                                <p>Couverture géographique • 105.8s</p>
+                            </div>
+                        </div>
+                        <div class="step-item completed" data-step="spatial-top5">
+                            <div class="step-icon">✅</div>
+                            <div class="step-info">
+                                <h4>Analyse TOP 5 Intenses</h4>
+                                <p>Événements les plus intenses • 60.2s</p>
+                            </div>
+                        </div>
+                        <div class="step-item completed" data-step="teleconnections">
+                            <div class="step-icon">✅</div>
+                            <div class="step-info">
+                                <h4>Téléconnexions Océan-Atmosphère</h4>
+                                <p>IOD, ENSO, TNA analysés • 16.4s</p>
+                            </div>
+                        </div>
+                        <div class="step-item completed" data-step="ml-pipeline">
+                            <div class="step-icon">✅</div>
+                            <div class="step-info">
+                                <h4>Pipeline Machine Learning</h4>
+                                <p>9 modèles entraînés • 370.3s</p>
+                            </div>
+                        </div>
+                        <div class="step-item completed" data-step="clustering">
+                            <div class="step-icon">✅</div>
+                            <div class="step-info">
+                                <h4>Clustering Avancé</h4>
+                                <p>5 algorithmes comparés • 213.7s</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 2: Production -->
+                <div class="pipeline-phase" data-phase="production">
+                    <div class="phase-header">
+                        <h3>🚀 Phase 2: Déploiement Production</h3>
+                        <div class="phase-status completed">Opérationnel</div>
+                    </div>
+                    <div class="phase-steps">
+                        <div class="step-item completed" data-step="deployment">
+                            <div class="step-icon">✅</div>
+                            <div class="step-info">
+                                <h4>Déploiement Modèles</h4>
+                                <p>9 modèles → TimescaleDB • 22.8s</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Résultats Clés - NOUVEAU -->
+    <section class="section section-secondary" id="key-results">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title fade-in">Résultats Clés</h2>
+                <p class="section-subtitle fade-in">
+                    Principales découvertes de l'analyse des précipitations extrêmes
+                </p>
+            </div>
+
+            <div class="results-grid">
+                <!-- Statistiques Générales -->
+                <div class="result-card">
+                    <div class="card-header">
+                        <div class="card-icon">📊</div>
+                        <h3>Statistiques Générales</h3>
+                    </div>
+                    <div class="result-metrics">
+                        <div class="metric-row">
+                            <span class="metric-label">Événements détectés:</span>
+                            <span class="metric-value">1439</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">Période analysée:</span>
+                            <span class="metric-value">1981-2023</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">Fréquence annuelle:</span>
+                            <span class="metric-value">33.5 événements/an</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">Précipitation moyenne:</span>
+                            <span class="metric-value">40.78 mm</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">Couverture spatiale moy:</span>
+                            <span class="metric-value">18.65%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Distribution Saisonnière -->
+                <div class="result-card">
+                    <div class="card-header">
+                        <div class="card-icon">🌦️</div>
+                        <h3>Distribution Saisonnière</h3>
+                    </div>
+                    <div class="seasonal-chart">
+                        <div class="season-bar" data-season="rainy">
+                            <div class="season-label">Saison des pluies</div>
+                            <div class="season-progress">
+                                <div class="progress-fill" style="width: 97.8%"></div>
+                            </div>
+                            <div class="season-value">1408 événements (97.8%)</div>
+                        </div>
+                        <div class="season-bar" data-season="dry">
+                            <div class="season-label">Saison sèche</div>
+                            <div class="season-progress">
+                                <div class="progress-fill" style="width: 2.2%"></div>
+                            </div>
+                            <div class="season-value">31 événements (2.2%)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Top Événements -->
+                <div class="result-card">
+                    <div class="card-header">
+                        <div class="card-icon">🏆</div>
+                        <h3>TOP 5 Événements</h3>
+                    </div>
+                    <div class="top-events">
+                        <div class="event-item">
+                            <div class="event-date">1996-11-08</div>
+                            <div class="event-details">
+                                <span class="coverage">80.5% couverture</span>
+                                <span class="location">Tambacounda</span>
+                            </div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-date">2012-09-28</div>
+                            <div class="event-details">
+                                <span class="coverage">78.2% couverture</span>
+                                <span class="location">Tambacounda</span>
+                            </div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-date">2000-10-16</div>
+                            <div class="event-details">
+                                <span class="coverage">69.5% couverture</span>
+                                <span class="location">Tambacounda</span>
+                            </div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-date">2018-06-27</div>
+                            <div class="event-details">
+                                <span class="coverage">68.0% couverture</span>
+                                <span class="location">Matam</span>
+                            </div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-date">2022-10-24</div>
+                            <div class="event-details">
+                                <span class="coverage">67.0% couverture</span>
+                                <span class="location">Tambacounda</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Performance ML -->
+                <div class="result-card">
+                    <div class="card-header">
+                        <div class="card-icon">🤖</div>
+                        <h3>Performance ML</h3>
+                    </div>
+                    <div class="ml-performance">
+                        <div class="model-result">
+                            <div class="model-name">🏆 RandomForest</div>
+                            <div class="model-metrics">
+                                <span class="metric">F1: 0.913</span>
+                                <span class="metric">R²: 0.791</span>
+                            </div>
+                        </div>
+                        <div class="model-result">
+                            <div class="model-name">XGBoost</div>
+                            <div class="model-metrics">
+                                <span class="metric">F1: 0.913</span>
+                                <span class="metric">R²: 0.706</span>
+                            </div>
+                        </div>
+                        <div class="model-result">
+                            <div class="model-name">SVM</div>
+                            <div class="model-metrics">
+                                <span class="metric">F1: 0.913</span>
+                                <span class="metric">R²: 0.019</span>
+                            </div>
+                        </div>
+                        <div class="clustering-result">
+                            <span class="cluster-label">Clustering optimal:</span>
+                            <span class="cluster-value">2 clusters (K-means)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Services (conservée) -->
     <section class="section section-secondary" id="services">
         <div class="container">
             <div class="section-header">
@@ -129,200 +361,91 @@
                         Tableau de bord avancé avec visualisations en temps réel, analyses climatiques prédictives et surveillance complète des performances du système neural.
                     </p>
                     <div class="card-features">
-                        <span class="feature-tag">Temps Réel</span>
+                        <span class="feature-tag">Time Series</span>
                         <span class="feature-tag">Dashboards</span>
+                        <span class="feature-tag">Alerting</span>
                         <span class="feature-tag">Analytics</span>
-                        <span class="feature-tag">Monitoring</span>
                     </div>
                     <div class="card-actions">
                         <a href="http://localhost:3001" class="btn btn-primary" target="_blank">
-                            Ouvrir Grafana →
+                            Voir Analytics →
                         </a>
-                    </div>
-                    <div class="access-info">
-                        🔐 <strong>Accès Sécurisé:</strong> admin / admin
                     </div>
                 </div>
 
-                <!-- Prometheus Core -->
-                <div class="card slide-in" onclick="window.open('http://localhost:9090', '_blank')">
+                <!-- TimescaleDB -->
+                <div class="card slide-in">
                     <div class="card-header">
-                        <div class="card-icon">📈</div>
+                        <div class="card-icon">🗄️</div>
                         <div class="card-meta">
-                            <h3 class="card-title">Prometheus Core</h3>
-                            <div class="card-status">🟢 En Ligne</div>
+                            <h3 class="card-title">TimescaleDB</h3>
+                            <div class="card-status">🟢 Connecté</div>
                         </div>
                     </div>
                     <p class="card-description">
-                        Moteur de métriques haute performance avec collecte de données temporelles, analyses statistiques avancées et surveillance proactive du système.
+                        Base de données temporelle optimisée pour les séries climatiques avec 9 modèles ML déployés et indexation avancée pour requêtes haute performance.
                     </p>
                     <div class="card-features">
                         <span class="feature-tag">Time Series</span>
-                        <span class="feature-tag">Métriques</span>
-                        <span class="feature-tag">Alertes</span>
-                        <span class="feature-tag">Monitoring</span>
-                    </div>
-                    <div class="card-actions">
-                        <a href="http://localhost:9090" class="btn btn-primary" target="_blank">
-                            Accéder aux Métriques →
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Neural Engine -->
-                <div class="card slide-in">
-                    <div class="card-header">
-                        <div class="card-icon">🤖</div>
-                        <div class="card-meta">
-                            <h3 class="card-title">Neural Engine</h3>
-                            <div class="card-status">🟢 Apprentissage</div>
-                        </div>
-                    </div>
-                    <p class="card-description">
-                        Pipeline d'apprentissage automatique de pointe avec réseaux de neurones profonds, algorithmes d'IA autonomes et capacités de prédiction climatique avancées.
-                    </p>
-                    <div class="card-features">
-                        <span class="feature-tag">Deep Learning</span>
-                        <span class="feature-tag">Neural Networks</span>
-                        <span class="feature-tag">AI Pipeline</span>
-                        <span class="feature-tag">Prédiction</span>
-                    </div>
-                    <div class="command-block">
-                        docker-compose run --rm neural-engine python climate_predict.py --mode=advanced
+                        <span class="feature-tag">PostgreSQL</span>
+                        <span class="feature-tag">ML Models</span>
+                        <span class="feature-tag">43 Years Data</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section État du Système -->
-    <section class="section" id="status">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title fade-in">État du Système Neural</h2>
-                <p class="section-subtitle fade-in">
-                    Surveillance en temps réel de l'infrastructure de pointe
-                </p>
-            </div>
-
-            <div class="grid">
-                <div class="card fade-in">
-                    <div class="card-header">
-                        <div class="status-pulse"></div>
-                        <div class="card-meta">
-                            <div class="card-title">Neural API Gateway</div>
-                            <div style="font-family: var(--font-mono); font-size: 0.875rem; color: var(--text-tertiary);">
-                                Port 8000 • Prêt pour Production
-                            </div>
-                        </div>
-                    </div>
-                    <div style="display: flex; gap: var(--space-lg); margin-top: var(--space-lg);">
-                        <div style="text-align: center;">
-                            <div style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; background: var(--gradient-primary); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">99.9%</div>
-                            <div style="font-size: 0.75rem; color: var(--text-tertiary); text-transform: uppercase;">Uptime</div>
-                        </div>
-                        <div style="text-align: center;">
-                            <div style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; background: var(--gradient-primary); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">&lt; 1ms</div>
-                            <div style="font-size: 0.75rem; color: var(--text-tertiary); text-transform: uppercase;">Latence</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card fade-in">
-                    <div class="card-header">
-                        <div class="status-pulse"></div>
-                        <div class="card-meta">
-                            <div class="card-title">TimescaleDB</div>
-                            <div style="font-family: var(--font-mono); font-size: 0.875rem; color: var(--text-tertiary);">
-                                Port 5432 • Base Temporelle Active
-                            </div>
-                        </div>
-                    </div>
-                    <div style="display: flex; gap: var(--space-lg); margin-top: var(--space-lg);">
-                        <div style="text-align: center;">
-                            <div style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; background: var(--gradient-primary); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">2.1TB</div>
-                            <div style="font-size: 0.75rem; color: var(--text-tertiary); text-transform: uppercase;">Données</div>
-                        </div>
-                        <div style="text-align: center;">
-                            <div style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; background: var(--gradient-primary); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">15K</div>
-                            <div style="font-size: 0.75rem; color: var(--text-tertiary); text-transform: uppercase;">Req/sec</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card fade-in">
-                    <div class="card-header">
-                        <div class="status-pulse"></div>
-                        <div class="card-meta">
-                            <div class="card-title">Redis Neural Cache</div>
-                            <div style="font-family: var(--font-mono); font-size: 0.875rem; color: var(--text-tertiary);">
-                                Port 6379 • Cache Haute Performance
-                            </div>
-                        </div>
-                    </div>
-                    <div style="display: flex; gap: var(--space-lg); margin-top: var(--space-lg);">
-                        <div style="text-align: center;">
-                            <div style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; background: var(--gradient-primary); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">98.7%</div>
-                            <div style="font-size: 0.75rem; color: var(--text-tertiary); text-transform: uppercase;">Hit Rate</div>
-                        </div>
-                        <div style="text-align: center;">
-                            <div style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; background: var(--gradient-primary); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">0.1ms</div>
-                            <div style="font-size: 0.75rem; color: var(--text-tertiary); text-transform: uppercase;">Latence</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card fade-in">
-                    <div class="card-header">
-                        <div class="status-pulse"></div>
-                        <div class="card-meta">
-                            <div class="card-title">Neural AI Engine</div>
-                            <div style="font-family: var(--font-mono); font-size: 0.875rem; color: var(--text-tertiary);">
-                                Core IA • Apprentissage Continu
-                            </div>
-                        </div>
-                    </div>
-                    <div style="display: flex; gap: var(--space-lg); margin-top: var(--space-lg);">
-                        <div style="text-align: center;">
-                            <div style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; background: var(--gradient-primary); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">87%</div>
-                            <div style="font-size: 0.75rem; color: var(--text-tertiary); text-transform: uppercase;">Précision</div>
-                        </div>
-                        <div style="text-align: center;">
-                            <div style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; background: var(--gradient-primary); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">24/7</div>
-                            <div style="font-size: 0.75rem; color: var(--text-tertiary); text-transform: uppercase;">Training</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Visualisations -->
+    <!-- Section Visualisations (conservée avec améliorations) -->
     <section class="section section-secondary" id="visualizations">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title fade-in">Visualisations Neural</h2>
                 <p class="section-subtitle fade-in">
-                    Explorez les analyses climatiques générées par notre système d'intelligence artificielle avancé
+                    Explorez les analyses climatiques générées par notre système d'IA avancé
                 </p>
             </div>
 
-            <!-- Contrôles -->
+            <!-- Contrôles améliorés -->
             <div class="viz-controls fade-in">
                 <div class="control-group">
                     <span class="control-label">Catégorie:</span>
                     <button class="filter-btn active" data-filter="all">Toutes</button>
                     <button class="filter-btn" data-filter="detection">Détection</button>
                     <button class="filter-btn" data-filter="spatial">Spatial</button>
-                    <button class="filter-btn" data-filter="temporal">Temporel</button>
+                    <button class="filter-btn" data-filter="teleconnections">Téléconnexions</button>
                     <button class="filter-btn" data-filter="machine-learning">ML</button>
                     <button class="filter-btn" data-filter="clustering">Clustering</button>
-                    <button class="filter-btn" data-filter="teleconnections">Téléconnexions</button>
                 </div>
                 
                 <div class="control-group">
                     <span class="control-label">Actions:</span>
                     <button class="filter-btn" id="refreshViz">🔄 Actualiser</button>
+                    <button class="filter-btn" id="loadRealData">📊 Charger Données</button>
+                </div>
+            </div>
+
+            <!-- Compteurs de visualisations -->
+            <div class="viz-stats">
+                <div class="stat-item">
+                    <span class="stat-label">Total:</span>
+                    <span class="stat-value" id="total-viz-count">--</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Détection:</span>
+                    <span class="stat-value" id="detection-viz-count">4</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Spatial:</span>
+                    <span class="stat-value" id="spatial-viz-count">15+</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">ML:</span>
+                    <span class="stat-value" id="ml-viz-count">3</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Clustering:</span>
+                    <span class="stat-value" id="clustering-viz-count">4</span>
                 </div>
             </div>
 
@@ -355,7 +478,10 @@
             </div>
         </div>
     </footer>
+    
+    <!-- Scripts -->
     <script src="js/dashboard.js"></script>
+    <script src="js/data-integration.js"></script>
     
 </body>
 </html>
