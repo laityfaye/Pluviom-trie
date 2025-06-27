@@ -423,20 +423,22 @@
 }
 
 [data-real-metric]::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, transparent 30%, rgba(16, 185, 129, 0.1) 50%, transparent 70%);
-    animation: dataFlow 3s ease-in-out infinite;
-    pointer-events: none;
+    animation: none !important;
+}
+
+.real-data-indicator {
+    animation: none !important;
 }
 
 @keyframes dataFlow {
-    0%, 100% { transform: translateX(-100%) translateY(-100%); }
-    50% { transform: translateX(100%) translateY(100%); }
+    0%, 100% { 
+        opacity: 0.3;
+        transform: none !important;
+    }
+    50% { 
+        opacity: 0.6;
+        transform: none !important;
+    }
 }
 
 [data-real-metric="events-detected"] {

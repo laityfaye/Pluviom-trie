@@ -1,0 +1,527 @@
+/* services/dashboard/dist/css/teleconnections.css */
+/* Styles pour la section Téléconnexions océan-atmosphère */
+
+/* ============================================================================
+   TELECONNECTIONS DASHBOARD
+   ============================================================================ */
+
+.teleconnections-dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xl);
+    margin-top: var(--space-3xl);
+}
+
+/* ============================================================================
+   INDICES CLIMATIQUES GRID
+   ============================================================================ */
+
+.indices-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-xl);
+}
+
+.index-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-xl);
+    border: 2px solid var(--glass-border);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.index-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-secondary);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.index-card:hover::before {
+    opacity: 0.03;
+}
+
+.index-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-colored);
+    border-color: var(--primary-blue);
+}
+
+.index-card.significant {
+    border-color: var(--primary-emerald);
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(16, 185, 129, 0.02) 100%);
+}
+
+.index-card.significant:hover {
+    border-color: var(--primary-emerald);
+    box-shadow: 0 20px 40px -12px rgba(16, 185, 129, 0.25);
+}
+
+.index-header {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-md);
+    padding: var(--space-xl);
+    background: linear-gradient(135deg, var(--bg-accent) 0%, var(--bg-secondary) 100%);
+    border-bottom: 1px solid var(--glass-border);
+    position: relative;
+    z-index: 2;
+}
+
+.index-icon {
+    font-size: 2.5rem;
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-lg);
+    background: var(--gradient-primary);
+    color: white;
+    box-shadow: var(--shadow-md);
+    flex-shrink: 0;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+}
+
+.index-card.significant .index-icon {
+    background: var(--gradient-secondary);
+    animation: pulse-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-glow {
+    0% { box-shadow: var(--shadow-md); }
+    100% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.4), var(--shadow-md); }
+}
+
+.index-info {
+    flex: 1;
+}
+
+.index-info h3 {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 var(--space-sm) 0;
+    line-height: 1.2;
+}
+
+.significance-badge {
+    font-size: 0.75rem;
+    padding: 0.375rem 0.75rem;
+    border-radius: 9999px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    border: 1px solid;
+}
+
+.significance-badge.high {
+    background: rgba(16, 185, 129, 0.2);
+    color: var(--primary-emerald);
+    border-color: rgba(16, 185, 129, 0.4);
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.2);
+}
+
+.significance-badge.medium {
+    background: rgba(37, 99, 235, 0.2);
+    color: var(--primary-blue);
+    border-color: rgba(37, 99, 235, 0.4);
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
+}
+
+.significance-badge.low {
+    background: rgba(156, 163, 175, 0.2);
+    color: var(--text-tertiary);
+    border-color: rgba(156, 163, 175, 0.4);
+}
+
+.index-metrics {
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    position: relative;
+    z-index: 2;
+}
+
+.correlation-value {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-sm);
+}
+
+.correlation-label {
+    font-size: 0.9rem;
+    color: var(--text-tertiary);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.correlation-number {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.correlation-number.positive {
+    color: var(--primary-emerald);
+}
+
+.correlation-number.negative {
+    color: #EF4444;
+}
+
+.correlation-number.neutral {
+    color: var(--text-tertiary);
+}
+
+.correlation-details {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    text-align: center;
+}
+
+.lag-info {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-family: var(--font-mono);
+}
+
+.p-value {
+    font-size: 0.85rem;
+    color: var(--text-tertiary);
+    font-family: var(--font-mono);
+    padding: 0.25rem 0.5rem;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--glass-border);
+}
+
+/* ============================================================================
+   SEASONAL ANALYSIS
+   ============================================================================ */
+
+.seasonal-analysis {
+    background: var(--bg-card);
+    border-radius: var(--radius-xl);
+    border: 2px solid var(--glass-border);
+    box-shadow: var(--shadow-lg);
+    padding: var(--space-xl);
+    transition: all 0.4s ease;
+}
+
+.seasonal-analysis:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-colored);
+    border-color: var(--primary-purple);
+}
+
+.seasonal-analysis h3 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 var(--space-xl) 0;
+    text-align: center;
+}
+
+.seasons-comparison {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-xl);
+}
+
+.season-analysis {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    border: 2px solid var(--glass-border);
+    padding: var(--space-lg);
+    transition: all 0.3s ease;
+}
+
+.season-analysis:hover {
+    background: var(--glass-hover);
+    border-color: var(--primary-blue);
+    transform: translateY(-2px);
+}
+
+.season-analysis h4 {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 var(--space-md) 0;
+    text-align: center;
+    padding-bottom: var(--space-sm);
+    border-bottom: 2px solid var(--glass-border);
+}
+
+.season-correlations {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.correlation-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-md);
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--glass-border);
+    transition: all 0.3s ease;
+}
+
+.correlation-item:hover {
+    background: var(--glass-hover);
+    border-color: var(--primary-blue);
+    transform: translateX(4px);
+}
+
+.index-name {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+.correlation-val {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--primary-emerald);
+    padding: 0.25rem 0.5rem;
+    background: rgba(16, 185, 129, 0.1);
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.no-correlations {
+    text-align: center;
+    color: var(--text-tertiary);
+    font-style: italic;
+    padding: var(--space-lg);
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    border: 1px dashed var(--glass-border);
+    margin: 0;
+}
+
+/* ============================================================================
+   CORRELATION STRENGTH INDICATORS
+   ============================================================================ */
+
+.correlation-strength {
+    position: relative;
+    margin-top: var(--space-md);
+}
+
+.strength-bar {
+    height: 0.75rem;
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+    position: relative;
+}
+
+.strength-fill {
+    height: 100%;
+    border-radius: var(--radius-sm);
+    transition: width 2s ease-out;
+    position: relative;
+}
+
+.strength-fill.strong-positive {
+    background: linear-gradient(90deg, var(--primary-emerald) 0%, #10B981 100%);
+}
+
+.strength-fill.moderate-positive {
+    background: linear-gradient(90deg, var(--primary-blue) 0%, #2563EB 100%);
+}
+
+.strength-fill.weak-positive {
+    background: linear-gradient(90deg, #F59E0B 0%, #D97706 100%);
+}
+
+.strength-fill.strong-negative {
+    background: linear-gradient(90deg, #EF4444 0%, #DC2626 100%);
+}
+
+.strength-fill.moderate-negative {
+    background: linear-gradient(90deg, #F97316 0%, #EA580C 100%);
+}
+
+.strength-fill.weak {
+    background: linear-gradient(90deg, #9CA3AF 0%, #6B7280 100%);
+}
+
+.strength-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: var(--space-sm);
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+}
+
+/* ============================================================================
+   LAG ANALYSIS VISUALIZATION
+   ============================================================================ */
+
+.lag-analysis {
+    margin-top: var(--space-xl);
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    border: 2px solid var(--glass-border);
+    padding: var(--space-lg);
+}
+
+.lag-analysis h4 {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 var(--space-lg) 0;
+    text-align: center;
+}
+
+.lag-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: var(--space-sm);
+}
+
+.lag-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--space-sm);
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--glass-border);
+    transition: all 0.3s ease;
+}
+
+.lag-item:hover {
+    background: var(--glass-hover);
+    border-color: var(--primary-blue);
+    transform: translateY(-2px);
+}
+
+.lag-item.optimal {
+    border-color: var(--primary-emerald);
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
+}
+
+.lag-month {
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+    font-weight: 500;
+}
+
+.lag-correlation {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-top: 0.25rem;
+}
+
+/* ============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================ */
+
+@media (max-width: 1024px) {
+    .indices-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: var(--space-lg);
+    }
+    
+    .seasons-comparison {
+        grid-template-columns: 1fr;
+    }
+    
+    .lag-grid {
+        grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .teleconnections-dashboard {
+        gap: var(--space-2xl);
+    }
+    
+    .indices-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+    }
+    
+    .index-header {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--space-sm);
+    }
+    
+    .index-icon {
+        width: 3rem;
+        height: 3rem;
+        font-size: 2rem;
+    }
+    
+    .correlation-number {
+        font-size: 2rem;
+    }
+    
+    .season-analysis h4 {
+        font-size: 1.1rem;
+    }
+    
+    .correlation-item {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--space-sm);
+    }
+}
+
+@media (max-width: 480px) {
+    .index-info h3 {
+        font-size: 1.1rem;
+    }
+    
+    .correlation-number {
+        font-size: 1.8rem;
+    }
+    
+    .seasonal-analysis {
+        padding: var(--space-lg);
+    }
+    
+    .season-analysis {
+        padding: var(--space-md);
+    }
+    
+    .lag-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}

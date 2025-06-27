@@ -1,0 +1,430 @@
+/* services/dashboard/dist/css/pipeline-results.css */
+/* Styles pour les résultats du pipeline scientifique */
+
+/* ============================================================================
+   PIPELINE PHASES SECTION
+   ============================================================================ */
+
+.pipeline-phases {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xl);
+    margin-top: var(--space-3xl);
+}
+
+.pipeline-phase {
+    background: var(--bg-card);
+    border-radius: var(--radius-xl);
+    border: 2px solid var(--glass-border);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.pipeline-phase:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-colored);
+    border-color: var(--primary-blue);
+}
+
+.phase-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-lg) var(--space-xl);
+    background: linear-gradient(135deg, var(--bg-accent) 0%, var(--bg-secondary) 100%);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.phase-header h3 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.phase-status {
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.phase-status.completed {
+    background: linear-gradient(135deg, var(--primary-emerald) 0%, #059669 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.phase-steps {
+    padding: var(--space-lg) var(--space-xl);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-lg);
+}
+
+.step-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-md);
+    padding: var(--space-md);
+    border-radius: var(--radius-lg);
+    background: var(--bg-secondary);
+    border: 1px solid var(--glass-border);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.step-item:hover {
+    background: var(--glass-hover);
+    transform: translateX(4px);
+    border-color: var(--primary-blue);
+}
+
+.step-item.completed {
+    border-color: var(--primary-emerald);
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
+}
+
+.step-icon {
+    font-size: 2rem;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    background: var(--gradient-primary);
+    color: white;
+    box-shadow: var(--shadow-md);
+    flex-shrink: 0;
+}
+
+.step-content {
+    flex: 1;
+}
+
+.step-content h4 {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 0.5rem 0;
+}
+
+.step-content p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin: 0 0 0.75rem 0;
+    line-height: 1.5;
+}
+
+.step-metrics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+    font-family: var(--font-mono);
+}
+
+.step-metrics span {
+    padding: 0.25rem 0.5rem;
+    background: rgba(37, 99, 235, 0.1);
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(37, 99, 235, 0.2);
+}
+
+/* ============================================================================
+   RESULTS GRID SECTION
+   ============================================================================ */
+
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--space-2xl);
+    margin-top: var(--space-3xl);
+}
+
+.result-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-xl);
+    border: 2px solid var(--glass-border);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+.result-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-colored);
+    border-color: var(--primary-blue);
+}
+
+.result-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-lg) var(--space-xl);
+    background: linear-gradient(135deg, var(--bg-accent) 0%, var(--bg-secondary) 100%);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.result-icon {
+    font-size: 2.5rem;
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-lg);
+    background: var(--gradient-primary);
+    color: white;
+    box-shadow: var(--shadow-md);
+}
+
+.result-header h3 {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.result-content {
+    padding: var(--space-xl);
+}
+
+/* Styles pour Distribution Saisonnière */
+.seasonal-distribution {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-lg);
+}
+
+.season-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.season-label {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+.season-bar {
+    height: 0.75rem;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+}
+
+.season-fill {
+    height: 100%;
+    border-radius: var(--radius-sm);
+    transition: width 2s ease-out;
+}
+
+.season-fill.rainy {
+    background: linear-gradient(90deg, var(--primary-blue) 0%, var(--primary-emerald) 100%);
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.2);
+}
+
+.season-fill.dry {
+    background: linear-gradient(90deg, #F59E0B 0%, #DC2626 100%);
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.2);
+}
+
+.season-value {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    font-weight: 500;
+}
+
+/* Styles pour Statistiques d'Intensité */
+.intensity-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: var(--space-md);
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--glass-border);
+    transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+    background: var(--glass-hover);
+    border-color: var(--primary-blue);
+    transform: translateY(-2px);
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-value {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin: 0;
+}
+
+/* Styles pour Répartition Géographique */
+.geographic-stats {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+}
+
+.region-stat {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-sm);
+}
+
+.region-name {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    min-width: 100px;
+}
+
+.region-bar {
+    flex: 1;
+    height: 0.5rem;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+}
+
+.region-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-purple) 0%, var(--primary-blue) 100%);
+    border-radius: var(--radius-sm);
+    transition: width 1.5s ease-out;
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.2);
+}
+
+.region-count {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    min-width: 120px;
+    text-align: right;
+}
+
+.result-summary {
+    padding: var(--space-md);
+    background: rgba(16, 185, 129, 0.05);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    border-radius: var(--radius-md);
+    text-align: center;
+}
+
+.result-summary p {
+    color: var(--text-secondary);
+    font-style: italic;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* ============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================ */
+
+@media (max-width: 768px) {
+    .pipeline-phases {
+        gap: var(--space-lg);
+    }
+    
+    .phase-steps {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+    }
+    
+    .step-item {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--space-sm);
+    }
+    
+    .step-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.5rem;
+    }
+    
+    .results-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+    }
+    
+    .intensity-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .region-stat {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-sm);
+    }
+    
+    .region-name {
+        min-width: auto;
+    }
+    
+    .region-count {
+        min-width: auto;
+        text-align: left;
+    }
+}
+
+@media (max-width: 480px) {
+    .phase-header {
+        flex-direction: column;
+        gap: var(--space-sm);
+        text-align: center;
+    }
+    
+    .result-header {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--space-sm);
+    }
+    
+    .result-icon {
+        width: 3rem;
+        height: 3rem;
+        font-size: 1.8rem;
+    }
+    
+    .intensity-stats {
+        grid-template-columns: 1fr;
+    }
+}

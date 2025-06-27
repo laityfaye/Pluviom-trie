@@ -1,0 +1,666 @@
+/* services/dashboard/dist/css/reports-viewer.css */
+/* Styles pour le visualiseur de rapports scientifiques */
+
+/* ============================================================================
+   REPORTS GRID
+   ============================================================================ */
+
+.reports-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--space-xl);
+    margin-top: var(--space-3xl);
+}
+
+.report-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-xl);
+    border: 2px solid var(--glass-border);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.report-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-primary);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.report-card:hover::before {
+    opacity: 0.03;
+}
+
+.report-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-colored);
+    border-color: var(--primary-blue);
+}
+
+.report-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+    padding: var(--space-xl);
+    background: linear-gradient(135deg, var(--bg-accent) 0%, var(--bg-secondary) 100%);
+    border-bottom: 2px solid var(--glass-border);
+    position: relative;
+    z-index: 2;
+}
+
+.report-icon {
+    font-size: 2.5rem;
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-lg);
+    background: var(--gradient-primary);
+    color: white;
+    box-shadow: var(--shadow-md);
+    flex-shrink: 0;
+    animation: icon-pulse 3s ease-in-out infinite;
+}
+
+@keyframes icon-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.report-info {
+    flex: 1;
+}
+
+.report-info h3 {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 var(--space-sm) 0;
+    line-height: 1.2;
+}
+
+.report-description {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+    margin: 0;
+}
+
+.report-content {
+    padding: var(--space-xl);
+    position: relative;
+    z-index: 2;
+}
+
+.report-stats {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+}
+
+.report-stats .stat {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    padding: var(--space-sm) var(--space-md);
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--primary-blue);
+    font-weight: 500;
+}
+
+.report-actions {
+    display: flex;
+    gap: var(--space-md);
+}
+
+.report-actions .btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-lg);
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    border: 2px solid;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn.btn-primary {
+    background: var(--gradient-primary);
+    color: white;
+    border-color: var(--primary-blue);
+    box-shadow: var(--shadow-md);
+}
+
+.btn.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    background: linear-gradient(135deg, #1E40AF 0%, #7C3AED 100%);
+}
+
+.btn.btn-secondary {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border-color: var(--glass-border);
+}
+
+.btn.btn-secondary:hover {
+    background: var(--glass-hover);
+    border-color: var(--primary-blue);
+    transform: translateY(-2px);
+}
+
+/* ============================================================================
+   REPORT MODAL
+   ============================================================================ */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(8px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.modal-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: var(--bg-card);
+    border-radius: var(--radius-xl);
+    border: 2px solid var(--glass-border);
+    box-shadow: var(--shadow-2xl);
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow: hidden;
+    transform: scale(0.9) translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.modal-overlay.show .modal-content {
+    transform: scale(1) translateY(0);
+}
+
+.report-modal {
+    width: 1000px;
+    max-width: 90vw;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-xl);
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-purple) 100%);
+    color: white;
+    border-bottom: 2px solid var(--glass-border);
+}
+
+.modal-header h3 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: var(--space-sm);
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.modal-body {
+    padding: 0;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-md);
+    padding: var(--space-xl);
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--glass-border);
+}
+
+/* ============================================================================
+   REPORT CONTENT VIEWER
+   ============================================================================ */
+
+.report-content-viewer {
+    padding: var(--space-2xl);
+    font-family: var(--font-primary);
+    line-height: 1.7;
+    color: var(--text-primary);
+}
+
+.report-content-viewer h1,
+.report-content-viewer h2,
+.report-content-viewer h3,
+.report-content-viewer h4,
+.report-content-viewer h5,
+.report-content-viewer h6 {
+    font-family: var(--font-heading);
+    color: var(--text-primary);
+    margin: var(--space-xl) 0 var(--space-lg) 0;
+    font-weight: 700;
+}
+
+.report-content-viewer h1 {
+    font-size: 2rem;
+    text-align: center;
+    border-bottom: 3px solid var(--primary-blue);
+    padding-bottom: var(--space-lg);
+    margin-bottom: var(--space-2xl);
+    background: var(--gradient-primary);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.report-content-viewer h2 {
+    font-size: 1.5rem;
+    color: var(--primary-blue);
+    border-left: 4px solid var(--primary-blue);
+    padding-left: var(--space-md);
+    margin-top: var(--space-2xl);
+}
+
+.report-content-viewer h3 {
+    font-size: 1.3rem;
+    color: var(--primary-purple);
+}
+
+.report-content-viewer h4 {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+}
+
+.report-content-viewer p {
+    margin: var(--space-lg) 0;
+    text-align: justify;
+}
+
+.report-content-viewer ul,
+.report-content-viewer ol {
+    margin: var(--space-lg) 0;
+    padding-left: var(--space-xl);
+}
+
+.report-content-viewer li {
+    margin: var(--space-sm) 0;
+}
+
+.report-content-viewer strong {
+    color: var(--primary-blue);
+    font-weight: 600;
+}
+
+.report-content-viewer em {
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.report-content-viewer code {
+    font-family: var(--font-mono);
+    background: var(--bg-secondary);
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--glass-border);
+    font-size: 0.9rem;
+    color: var(--primary-purple);
+}
+
+.report-content-viewer pre {
+    background: var(--bg-secondary);
+    padding: var(--space-lg);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--glass-border);
+    overflow-x: auto;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: var(--space-lg) 0;
+}
+
+.report-content-viewer table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--space-lg) 0;
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--glass-border);
+    overflow: hidden;
+}
+
+.report-content-viewer th,
+.report-content-viewer td {
+    padding: var(--space-md);
+    text-align: left;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.report-content-viewer th {
+    background: var(--bg-secondary);
+    font-weight: 600;
+    color: var(--text-primary);
+    font-family: var(--font-heading);
+}
+
+.report-content-viewer tr:hover {
+    background: var(--glass-hover);
+}
+
+.report-content-viewer blockquote {
+    margin: var(--space-lg) 0;
+    padding: var(--space-lg);
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+    border-left: 4px solid var(--primary-blue);
+    border-radius: var(--radius-md);
+    font-style: italic;
+    color: var(--text-secondary);
+}
+
+/* ============================================================================
+   STATISTICS HIGHLIGHTING
+   ============================================================================ */
+
+.report-content-viewer .stat-highlight {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    margin: var(--space-md) 0;
+    display: inline-block;
+    font-weight: 600;
+    color: var(--primary-emerald);
+}
+
+.report-content-viewer .metric-value {
+    font-family: var(--font-heading);
+    font-size: 1.2em;
+    font-weight: 700;
+    color: var(--primary-blue);
+}
+
+.report-content-viewer .section-separator {
+    height: 2px;
+    background: var(--gradient-primary);
+    border: none;
+    border-radius: 1px;
+    margin: var(--space-2xl) 0;
+}
+
+.report-content-viewer .key-finding {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 215, 0, 0.05) 100%);
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    margin: var(--space-lg) 0;
+    position: relative;
+}
+
+.report-content-viewer .key-finding::before {
+    content: '🔑';
+    position: absolute;
+    top: -10px;
+    left: var(--space-md);
+    background: var(--bg-card);
+    padding: 0 var(--space-sm);
+    font-size: 1.2rem;
+}
+
+/* ============================================================================
+   PDF GENERATION STYLES
+   ============================================================================ */
+
+.pdf-header {
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+    padding-bottom: var(--space-lg);
+    border-bottom: 3px solid var(--primary-blue);
+}
+
+.pdf-header .logo {
+    font-size: 3rem;
+    margin-bottom: var(--space-md);
+}
+
+.pdf-header .title {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--primary-blue);
+    margin: 0;
+}
+
+.pdf-header .subtitle {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin: var(--space-sm) 0 0 0;
+}
+
+.pdf-footer {
+    margin-top: var(--space-2xl);
+    padding-top: var(--space-lg);
+    border-top: 2px solid var(--glass-border);
+    text-align: center;
+    color: var(--text-tertiary);
+    font-size: 0.9rem;
+}
+
+/* ============================================================================
+   LOADING STATES
+   ============================================================================ */
+
+.report-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-3xl);
+    text-align: center;
+}
+
+.report-loading .spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid var(--glass-border);
+    border-top: 4px solid var(--primary-blue);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: var(--space-lg);
+}
+
+.report-loading h3 {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    margin: 0 0 var(--space-sm) 0;
+}
+
+.report-loading p {
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.report-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-3xl);
+    text-align: center;
+    color: #EF4444;
+}
+
+.report-error .error-icon {
+    font-size: 3rem;
+    margin-bottom: var(--space-lg);
+}
+
+.report-error h3 {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    margin: 0 0 var(--space-sm) 0;
+}
+
+.report-error p {
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* ============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================ */
+
+@media (max-width: 1024px) {
+    .reports-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: var(--space-lg);
+    }
+    
+    .report-modal {
+        width: 90vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .reports-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .report-header {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--space-md);
+    }
+    
+    .report-icon {
+        width: 3rem;
+        height: 3rem;
+        font-size: 2rem;
+    }
+    
+    .report-actions {
+        flex-direction: column;
+    }
+    
+    .modal-content {
+        max-width: 95vw;
+        max-height: 95vh;
+    }
+    
+    .report-content-viewer {
+        padding: var(--space-lg);
+    }
+    
+    .modal-footer {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-header {
+        padding: var(--space-lg);
+    }
+    
+    .modal-header h3 {
+        font-size: 1.2rem;
+    }
+    
+    .report-content-viewer h1 {
+        font-size: 1.5rem;
+    }
+    
+    .report-content-viewer h2 {
+        font-size: 1.3rem;
+    }
+    
+    .modal-body {
+        max-height: 60vh;
+    }
+}
+
+/* ============================================================================
+   PRINT STYLES FOR PDF
+   ============================================================================ */
+
+@media print {
+    .modal-overlay,
+    .modal-header,
+    .modal-footer {
+        display: none !important;
+    }
+    
+    .report-content-viewer {
+        max-width: none;
+        max-height: none;
+        overflow: visible;
+        padding: 20px;
+        font-size: 12pt;
+        line-height: 1.6;
+    }
+    
+    .report-content-viewer h1 {
+        font-size: 18pt;
+        page-break-after: avoid;
+    }
+    
+    .report-content-viewer h2 {
+        font-size: 16pt;
+        page-break-after: avoid;
+    }
+    
+    .report-content-viewer h3 {
+        font-size: 14pt;
+        page-break-after: avoid;
+    }
+    
+    .report-content-viewer table {
+        page-break-inside: avoid;
+    }
+    
+    .report-content-viewer .key-finding {
+        page-break-inside: avoid;
+    }
+}

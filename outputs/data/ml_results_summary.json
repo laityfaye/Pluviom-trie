@@ -4,7 +4,7 @@
       "test_accuracy": 0.9108910891089109,
       "test_precision": 0.9215686274509803,
       "test_recall": 0.9038461538461539,
-      "test_f1": 0.912621359223301,
+      "test_f1": 0.9126213592233009,
       "best_params": {
         "max_depth": 10,
         "min_samples_split": 10,
@@ -15,7 +15,7 @@
       "test_accuracy": 0.9108910891089109,
       "test_precision": 0.9215686274509803,
       "test_recall": 0.9038461538461539,
-      "test_f1": 0.912621359223301,
+      "test_f1": 0.9126213592233009,
       "best_params": {
         "learning_rate": 0.01,
         "max_depth": 3,
@@ -26,7 +26,7 @@
       "test_accuracy": 0.9108910891089109,
       "test_precision": 0.9215686274509803,
       "test_recall": 0.9038461538461539,
-      "test_f1": 0.912621359223301,
+      "test_f1": 0.9126213592233009,
       "best_params": {
         "C": 0.1,
         "gamma": "scale",
